@@ -17,5 +17,21 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-karla), Arial, sans-serif;
+}
+
+/********************************************** 
+**********TYPOGRAPHY***************************
+***********************************************
+*/
+h1 {
+  font-family: var(--font-sedan);
+}
+
+h2 {
+  font-family: var(--font-lato);
+}
+
+nav a {
+  font-family: var(--font-lato);
 }

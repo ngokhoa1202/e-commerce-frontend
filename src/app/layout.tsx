@@ -1,15 +1,23 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { NextFontWithVariable } from "next/dist/compiled/@next/font";
+import Header from "./_components/Header";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
+const lato: NextFontWithVariable = localFont({
+  src: "./fonts/Lato-Regular.ttf",
+  variable: "--font-lato",
   weight: "100 900",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
+
+const karla: NextFontWithVariable = localFont({
+  src: "./fonts/Karla-VariableFont_wght.ttf",
+  variable: "--font-karla",
+  weight: "100 900",
+});
+const sedan: NextFontWithVariable = localFont({
+  src: "./fonts/Sedan-Regular.ttf",
+  variable: "--font-sedan",
   weight: "100 900",
 });
 
@@ -26,8 +34,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${sedan.variable} ${karla.variable} ${lato.variable} antialiased`}
       >
+        <Header />
         {children}
       </body>
     </html>
