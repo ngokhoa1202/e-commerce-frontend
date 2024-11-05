@@ -18,8 +18,8 @@ export default function Header(): JSX.Element {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50">
-      <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
+    <header>
+      <nav aria-label="Global" className="flex items-center justify-between px-6 lg:px-8">
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-5">
             <span className="sr-only"></span>
@@ -49,7 +49,7 @@ export default function Header(): JSX.Element {
             <a key={item.name} href={item.href} 
             className="text-lg font-semibold text-gray-700 px-5 py-2 rounded-md
               hover:bg-blue-600 hover:text-gray-200 active:bg-blue-700 active:text-gray-100
-              hover:shadow-lg active:shadow-lg
+              hover:shadow-lg active:shadow-lg focus:drop-shadow-lg focus:outline-blue-700 focus:outline-offset-4
               ">
               {item.name}
             </a>
