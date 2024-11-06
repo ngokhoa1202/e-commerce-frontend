@@ -1,10 +1,10 @@
 import React from 'react';
-import ContactUs from './components/ContactUs';
+import AboutUs from './components/AboutUs';
 
 export default function Home() {
   return (
     <>
-      <ContactUs/>
+      <AboutUs/>
     </>
   );
 }
