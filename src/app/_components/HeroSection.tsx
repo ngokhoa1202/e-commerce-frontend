@@ -37,9 +37,8 @@ export default function HeroSection(): JSX.Element {
           alt="A tutor instructs her student to solve a math problem"
           loading="lazy"
           quality={100}
-          objectFit="cover"
           fill={true}
-          className="rounded-2xl shadow-2xl"
+          className="rounded-2xl shadow-2xl object-cover"
         />
       </div>
       
