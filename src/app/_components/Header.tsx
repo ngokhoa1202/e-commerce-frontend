@@ -15,7 +15,7 @@ const navigation = [
 
 export default function Header(): JSX.Element {
   
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header>
@@ -47,10 +47,10 @@ export default function Header(): JSX.Element {
         <div className="lg:flex lg:gap-x-12">
           {navigation.map((item) => (
             <a key={item.name} href={item.href} 
-            className="text-lg font-semibold text-gray-700 px-5 py-2 rounded-md
-              hover:bg-blue-600 hover:text-gray-200 active:bg-blue-700 active:text-gray-100
-              hover:shadow-lg active:shadow-lg focus:drop-shadow-lg focus:outline-blue-700 focus:outline-offset-4
-              ">
+              className="text-lg font-semibold text-gray-700 px-5 py-2 rounded-md
+                hover:bg-blue-600 hover:text-gray-200 active:bg-blue-700 active:text-gray-100
+                hover:active:shadow-lg focus:drop-shadow-lg focus:outline-blue-700 focus:outline-offset-4"
+            >
               {item.name}
             </a>
           ))}
