@@ -8,17 +8,17 @@ type PartnerLogo = {
 
 const partnerLogos: Array<PartnerLogo> = [
   {
-    src: "/duolingo.webp",
+    src: "/partners/duolingo.webp",
     alt: "Duolingo brand logo",
     width: 80,
   },
   {
-    src: "/elsa.png",
+    src: "/partners/elsa.png",
     alt: "Elsa speaking app brand logo",
     width: 200
   },
   {
-    src: "/british-council.png",
+    src: "/partners/british-council.png",
     alt: "British council brand logo",
     width: 270
   }

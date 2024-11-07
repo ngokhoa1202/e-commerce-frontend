@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
 import Header from "./_components/Header";
+import Footer from "./_components/Footer";
 
 const petitFormalScript: NextFontWithVariable = localFont({
   src: "./fonts/PetitFormalScript-Regular.ttf",
@@ -44,6 +45,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
