@@ -33,7 +33,7 @@ const backlinks: Array<Backlink> = [
 export default function Footer(): JSX.Element {
 
   return (
-    <footer className="grid grid-cols-5 gap-12 w-11/12 mx-auto mt-40 mb-12 bg-blue-50">
+    <footer className="grid grid-cols-6 gap-x-16 w-11/12 mx-auto mt-40 mb-12 bg-blue-50">
       <div className="flex flex-col gap-8 w-11/12">
         <a href="#" className="flex flex-col items-center">
           <Image 
@@ -152,7 +152,7 @@ export default function Footer(): JSX.Element {
         </ul>
       </div>
       
-       <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-8">
         <h3 className="text-xl font-semibold">Customer service</h3>
         <ul className="flex flex-col gap-5">
           <li>
