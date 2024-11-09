@@ -16,16 +16,16 @@ export default function HeroSection(): JSX.Element {
           <h2 className="mt-10 text-pretty text-3xl font-medium tracking-normal text-gray-800">
             With our <span className="text-blue-700 drop-shadow">high-quality English</span> tutoring classes
           </h2>
-          <p className="mt-8 text-pretty">Learn from the competent certified tutoring staffu</p>
+          <p className="mt-8 text-pretty">Learn from the competent certified tutoring staffs</p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <a
               href="#"
               className="bg-blue-600 text-gray-200 px-5 py-2 rounded-md font-bold shadow-lg
-                hover:active:bg-blue-800 hover:active:text-gray-100 hover:active:focus:shadow-xl focus:outline-offset-8 focus:outline-blue-600"
+                hover:bg-blue-800 active:bg-blue-800 hover:text-gray-100 active:text-gray-100 hover:shadow-xl active:shadow-xl focus:shadow-xl focus:outline-offset-8 focus:outline-blue-600"
             >
               Explore classes
             </a>
-            <a href="#" className="text-gray-700 px-4 py-2 rounded-md font-normal hover:active:focus:underline hover:active:focus:underline-offset-4 focus:outline-offset-4 focus:outline-blue-600">
+            <a href="#" className="text-gray-700 px-4 py-2 rounded-md font-normal hover:underline active:underline focus:underline hover:underline-offset-4 active:underline-offset-8 focus:outline-offset-4 hover:text-gray-900 active:text-gray-900 focus:outline-blue-600">
               View pricing <span aria-hidden="true">→</span>
             </a>
           </div>

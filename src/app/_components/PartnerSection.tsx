@@ -21,6 +21,11 @@ const partnerLogos: Array<PartnerLogo> = [
     src: "/partners/british-council.png",
     alt: "British council brand logo",
     width: 270
+  },
+  {
+    src: "/partners/promova.png",
+    alt: "Promova brand logo",
+    width: 120
   }
 ]
 
@@ -29,7 +34,7 @@ export default function PartnerSection(): JSX.Element {
   return (
     <section className="mx-auto">
       <h2 className="text-3xl text-center">Our partners</h2>
-      <ul className="flex flex-row justify-around flex-shrink-0 w-full h-16 mt-6">
+      <ul className="flex flex-row justify-around flex-shrink-0 w-full h-16 mt-10">
         {
           partnerLogos.map((logo, idx) => {
             return (
