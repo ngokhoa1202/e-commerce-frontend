@@ -3,19 +3,37 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
+/********************************************** 
+**********TYPOGRAPHY***************************
+***********************************************
+*/
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-karla), Arial, sans-serif;
 }
+
+h1 {
+  font-family: var(--font-sedan);
+}
+
+h2 {
+  font-family: var(--font-lato);
+}
+
+nav a {
+  font-family: var(--font-lato);
+}
+
+.brand-name {
+  font-family: var(--font-petit-formal);
+  font-weight: 800;
+  font-style: normal;
+}
+
+/********************************************** 
+**********COLOR***************************
+***********************************************
+*/
