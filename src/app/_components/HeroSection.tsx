@@ -1,11 +1,43 @@
-'use client'
+'use client';
 
 import Image from "next/image";
+
+type Portrait = {
+  src: string;
+  alt: string;
+}
+
+const parentPortraits: Array<Portrait> = [
+  {
+    src: "/parents/parent-1.jpg",
+    alt: "A parent's portrait photo"
+  },
+  {
+    src: "/parents/parent-2.jpg",
+    alt: "A parent's portrait photo"
+  },
+  {
+    src: "/parents/parent-3.jpg",
+    alt: "A parent's portrait photo"
+  },
+  {
+    src: "/parents/parent-4.jpg",
+    alt: "A parent's portrait photo"
+  },
+  {
+    src: "/parents/parent-5.jpg",
+    alt: "A parent's portrait photo"
+  },
+  {
+    src: "/parents/parent-6.jpg",
+    alt: "A parent's portrait photo"
+  }
+]
 
 export default function HeroSection(): JSX.Element {
 
   return (
-    <div className="px-6 pt-14 lg:px-8 bg-blue-50">
+    <section className="px-6 pt-14 lg:px-8 bg-blue-50">
     
       <div className="mx-auto max-w-2xl">
         
@@ -31,6 +63,29 @@ export default function HeroSection(): JSX.Element {
           </div>
         </div>
       </div>
+      
+      <ul className="flex flex-row gap-0 h-12 mx-auto justify-center mt-10">
+        {
+          parentPortraits.map((portrait, idx) => {
+            return (
+              <li key={idx} className="h-full -mr-2">
+                <Image
+                  src={portrait.src}
+                  alt={portrait.alt}
+                  loading="lazy"
+                  width={48}
+                  height={48}
+                  className="rounded-[50%] border-2 border-blue-400"
+                />
+              </li>
+            )
+          })
+        }
+      </ul>
+
+      <p className="text-center mt-2">
+        <span className="text-blue-800 font-semibold text-xl">10 000</span> parents registration last year
+      </p>
 
       <div className="w-full h-[36rem] relative mt-16 mb-32 p-10">
         <Image src="/hero.jpg"
@@ -42,6 +97,6 @@ export default function HeroSection(): JSX.Element {
         />
       </div>
       
-    </div>
+    </section>
   )
 }

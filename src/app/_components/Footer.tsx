@@ -1,11 +1,13 @@
 import Image from "next/image";
-
+import { IonIcon } from "@ionic/react";
+import { logoYoutube } from 'ionicons/icons';
 
 type Backlink = {
   src: string;
   alt: string;
   href: string;
 }
+
 
 const backlinks: Array<Backlink> = [
   {
@@ -33,7 +35,7 @@ const backlinks: Array<Backlink> = [
 export default function Footer(): JSX.Element {
 
   return (
-    <footer className="grid grid-cols-5 gap-x-16 w-11/12 mx-auto mt-40 mb-12 bg-blue-50">
+    <footer className="grid grid-cols-5 gap-x-16 w-full mx-auto mt-40 mb-12 bg-blue-50 px-8 py-8">
       <div className="flex flex-col gap-8 w-11/12">
         <a href="#" className="flex flex-col items-center">
           <Image 
@@ -49,21 +51,24 @@ export default function Footer(): JSX.Element {
           {
             backlinks.map((backlink, idx) => {
               return (
+              
                 <li key={idx} className="h-6">
-                  <a href={backlink.href}  >
+                  <a href={backlink.href} className="block hover:-translate-y-1 duration-200" >
                     <Image 
                       src={backlink.src}
                       alt={backlink.alt}
                       loading="lazy"
                       width={24}
+                      color="blue"
                       height={24}
-                      className="block w-8 h-8 shadow focus:outline-1 focus:outline-offset-4 focus:outline-blue-400"
+                      className="block w-8 h-8 focus:outline-1 focus:outline-offset-4 focus:outline-blue-400"
                     />
                   </a>
                 </li>
               )
             })
           }
+         
         </ul>
 
         <p className="text-sm text-center">&copy; ZetStudy 2024. All rights reserved.</p>

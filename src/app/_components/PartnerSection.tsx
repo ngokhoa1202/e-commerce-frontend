@@ -32,7 +32,7 @@ const partnerLogos: Array<PartnerLogo> = [
 export default function PartnerSection(): JSX.Element {
   
   return (
-    <section className="mx-auto">
+    <section className="mx-auto mt-20">
       <h2 className="text-3xl text-center">Our partners</h2>
       <ul className="flex flex-row justify-around flex-shrink-0 w-full h-16 mt-10">
         {

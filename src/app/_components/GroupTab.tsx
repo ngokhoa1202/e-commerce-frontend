@@ -15,13 +15,13 @@ export default function GroupTab() {
       <div className="hidden sm:block">
         <nav className="flex gap-0 bg-zinc-200 rounded-3xl w-64 mx-auto" aria-label="Tabs">
           <button
-            className="p-2 text-normal font-medium hover:bg-blue-300 px-4 py-2 w-1/2 text-center rounded-3xl"
+            className="p-2 text-normal font-medium hover:bg-zinc-500 hover:text-gray-200 px-4 py-2 w-1/2 text-center rounded-3xl"
           >
             For students
           </button>
 
           <button
-            className="p-2 text-normal font-medium hover:bg-blue-300 px-4 py-2 w-1/2 text-center rounded-3xl"
+            className="p-2 text-normal font-medium hover:bg-zinc-500 hover:text-gray-200  px-4 py-2 w-1/2 text-center rounded-3xl"
           >
             For tutors
           </button>
