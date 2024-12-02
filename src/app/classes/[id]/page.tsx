@@ -40,7 +40,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         <p>{courseSample.description}</p>
       </div>
       <hr/>
-      <Image alt="Cover" src={coverImage} className="my-8"/>
+      {/* <Image alt="Cover" src={coverImage} className="my-8"/> */}
       <div className="grid grid-cols-2 gap-8">
         {courseSample.curriculum.map((week, idx) => (
           <CurriculumCard key={idx} curriculum={week} />
