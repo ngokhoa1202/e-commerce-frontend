@@ -1,6 +1,7 @@
 import ClassList from "../_components/classes/ClassList";
 const sampleCourses = [
     {
+      id: "1",
       title: "Introduction to Web Development",
       description: "Learn the basics of web development with HTML, CSS, and JavaScript.",
       classLink: "/course-details/intro-web-dev",
@@ -12,6 +13,7 @@ const sampleCourses = [
       ],
     },
     {
+      id: "2",
       title: "Advanced JavaScript",
       description: "Deep dive into JavaScript and explore ES6+ features.",
       classLink: "/course-details/advanced-js",
@@ -22,6 +24,7 @@ const sampleCourses = [
       ],
     },
     {
+      id: "3",
       title: "UI/UX Design Fundamentals",
       description: "Master the basics of UI/UX design, focusing on user-centered design.",
       classLink: "/course-details/ui-ux",
@@ -32,11 +35,13 @@ const sampleCourses = [
       ],
     },
   ];
-  
-  export default function Page() {
-    return (
-      <main className="container mx-auto p-4">
-        <ClassList classes={sampleCourses} />
-      </main>
-    );
-  }
+
+export default async function Page() {
+  const courses = await fetch("https://tienclay.me/ecommerce/courses");
+  console.log(courses);
+  return (
+    <main className="container mx-auto p-4">
+      <ClassList classes={sampleCourses} />
+    </main>
+  );
+}

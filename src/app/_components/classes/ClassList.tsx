@@ -1,6 +1,7 @@
 import ClassCard from './ClassCard';
 
 interface Class {
+  id: string;
   title: string;
   description: string;
   classLink: string;
@@ -17,12 +18,12 @@ interface ClassListProps {
 function ClassList({ classes }: ClassListProps) {
   return (
     <div className="space-y-4">
-      {classes.map((Class, index) => (
+      {classes.map((Class) => (
         <ClassCard
-          key={index}
+          key={Class.id}
+          id={Class.id}
           title={Class.title}
           description={Class.description}
-          classLink={Class.classLink}
           curriculum={Class.curriculum}
         />
       ))}

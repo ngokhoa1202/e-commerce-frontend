@@ -1,6 +1,5 @@
-
 import React from 'react';
-
+import Link from 'next/link';
 
 // Định nghĩa kiểu dữ liệu cho props
 interface CurriculumItem {
@@ -9,14 +8,14 @@ interface CurriculumItem {
 }
 
 interface ClassCardProps {
+  id: string;
   title: string; // Tiêu đề
   description: string; // Mô tả
-  classLink: string; // Link đến lớp học
   curriculum: CurriculumItem[]; // Danh sách các mục trong chương trình học
 }
 
 
-export default function ClassCard({ title, description, classLink, curriculum }: ClassCardProps) {
+export default function ClassCard({ id, title, description, curriculum }: ClassCardProps) {
   return (
     <div className="rounded overflow-hidden shadow-lg bg-white">
       {/* Header */}
@@ -25,12 +24,12 @@ export default function ClassCard({ title, description, classLink, curriculum }:
           <h2 className="text-xl font-bold text-gray-800">{title}</h2>
           <p className="text-gray-600 text-sm">{description}</p>
         </div>
-        <a
-          href={classLink}
+        <Link
+          href={`/classes/${id}`}
           className="text-blue-500 font-semibold hover:text-blue-700"
         >
           View Detail
-        </a>
+        </Link>
       </div>
 
       {/* Body */}

@@ -1,8 +1,9 @@
 import Image from "next/image";
 import coverImage from "../../_assets/course-cover.png"
-import CurriculumCard from "../../_components/class-detail/CurriculumCard";
+import CurriculumCard from "../../_components/classes/CurriculumCard";
 
-const course = {
+const courseSample = {
+  id: 1,
   title: "Introduction to Web Development",
   description: "Learn the basics of web development with HTML, CSS, and JavaScript.",
   classLink: "/intro-web-dev",
@@ -28,18 +29,20 @@ const course = {
   ],
 };
 
-export default async function Page({ params }: { params: Promise<{ slug: string }>}) {
-  console.log((await params).slug);
+export default async function Page({ params }: { params: Promise<{ id: string }>}) {
+  const { id } = (await params);
+  const course = await fetch(`https://tienclay.me/ecommerce/courses/${id}`);
+  console.log(course);
   return (
     <main className="container mx-auto p-8 max-w-[1400px] flex flex-col gap-8">
       <div className="grid grid-cols-2 py-4 gap-4">
-        <p className="text-4xl font-bold">{course.title}</p>
-        <p>{course.description}</p>
+        <p className="text-4xl font-bold">{courseSample.title}</p>
+        <p>{courseSample.description}</p>
       </div>
       <hr/>
       <Image alt="Cover" src={coverImage} className="my-8"/>
       <div className="grid grid-cols-2 gap-8">
-        {course.curriculum.map((week, idx) => (
+        {courseSample.curriculum.map((week, idx) => (
           <CurriculumCard key={idx} curriculum={week} />
         ))}
       </div>

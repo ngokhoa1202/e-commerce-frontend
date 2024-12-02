@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import Link from "next/link";
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -21,7 +22,7 @@ export default function Header(): JSX.Element {
     <header>
       <nav aria-label="Global" className="flex items-center justify-between px-6 lg:px-8">
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-5">
+          <Link href="/" className="-m-1.5 p-5">
             <span className="sr-only"></span>
             <Image 
               alt="ZetStudy brand logo"
@@ -32,7 +33,7 @@ export default function Header(): JSX.Element {
               loading="lazy"
             />
             <span className="brand-name text-">ZetStudy</span>
-          </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -46,13 +47,13 @@ export default function Header(): JSX.Element {
         </div>
         <div className="lg:flex lg:gap-x-12">
           {navigation.map((item) => (
-            <a key={item.name} href={item.href} 
+            <Link key={item.name} href={item.href} 
               className="text-lg font-semibold text-gray-700 px-5 py-2 rounded-md
                 hover:bg-blue-600 hover:text-gray-200 active:bg-blue-700 active:text-gray-100
                 hover:active:shadow-lg focus:drop-shadow-lg focus:outline-blue-700 focus:outline-offset-4"
             >
               {item.name}
-            </a>
+            </Link>
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
