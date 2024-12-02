@@ -11,7 +11,7 @@ const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Classes', href: '/classes' },
   { name: 'Pricing', href: '#' },
-  { name: 'About us', href: '#' },
+  { name: 'About us', href: '/about' },
 ]
 
 export default function Header(): JSX.Element {
