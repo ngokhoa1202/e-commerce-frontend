@@ -41,7 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${sedan.variable} ${karla.variable} ${lato.variable} ${petitFormalScript.variable} antialiased bg-blue-50 text-gray-700`}
+        className={`${sedan.variable} ${karla.variable} ${lato.variable} ${petitFormalScript.variable} antialiased text-gray-700`}
       >
         <Header />
         {children}
