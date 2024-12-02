@@ -17,12 +17,12 @@ export default function CurriculumCard ({ curriculum }: { curriculum: Curriculum
       <p className="font-bold text-2xl">{title}</p>
       <div className="flex flex-col gap-4">
         {lessons.map((lesson, idx) => (
-          <div key={idx} className="flex justify-between border rounded-lg p-6 items-center hover:border-orange-300">
+          <div key={idx} className="group flex justify-between border rounded-lg p-6 items-center hover:border-blue-300 hover:shadow-lg hover:shadow-blue-300/50">
             <div>
               <div className="text-xl font-bold">{lesson.title}</div>
               <div className="text-lg text-gray-500">Lesson {idx + 1}</div>
             </div>
-            <div className="flex h-fit bg-gray-100 px-4 py-2 rounded">
+            <div className="flex h-fit bg-gray-100 px-4 py-2 rounded group-hover:bg-blue-200">
               <ClockIcon aria-hidden className="h-6 w-6"/>
               <p className="text-lg">{lesson.etc}</p>
             </div>
