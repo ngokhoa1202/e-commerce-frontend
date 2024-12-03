@@ -1,3 +1,9 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": ["next/core-web-vitals", "next/typescript", "airbnb"],
+  "rules": {
+    "react/jsx-filename-extension": [0, { "extensions": [".tsx"] }],
+    "react/react-in-jsx-scope": "off",
+    "quotes": [2, "double"],
+    "import/extensions": [2, "ignorePackages", { "js": "never", "ts": "never", "jsx": "never", "tsx": "never" }]
+  }
 }
