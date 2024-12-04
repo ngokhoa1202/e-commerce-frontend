@@ -3,7 +3,14 @@
   "rules": {
     "react/jsx-filename-extension": [0, { "extensions": [".tsx"] }],
     "react/react-in-jsx-scope": "off",
-    "quotes": [2, "double"],
-    "import/extensions": [2, "ignorePackages", { "js": "never", "ts": "never", "jsx": "never", "tsx": "never" }]
+    "quotes": [1, "single"],
+    "import/extensions": [2, "ignorePackages", { "js": "never", "ts": "never", "jsx": "never", "tsx": "never" }],
+    "max-len": [2, 160],
+    "no-unused-vars": "off",
+    "jsx-a11y/label-has-associated-control": [2, {
+      "required": {
+        "some": ["nesting", "id"]
+      }
+    }]
   }
 }
