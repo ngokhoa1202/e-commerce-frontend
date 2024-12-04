@@ -40,8 +40,9 @@ export default async function Page() {
   const courses = await fetch("https://tienclay.me/ecommerce/courses");
   console.log(courses);
   return (
-    <main className="container mx-auto p-4">
+    <section className="container mx-auto p-4">
+      <h1 className="font-bold text-4xl text-center mt-12">Our classes</h1>
       <ClassList classes={sampleCourses} />
-    </main>
+    </section>
   );
 }

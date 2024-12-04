@@ -17,11 +17,11 @@ interface ClassCardProps {
 
 export default function ClassCard({ id, title, description, curriculum }: ClassCardProps) {
   return (
-    <div className="rounded overflow-hidden shadow-lg bg-white">
+    <div className="rounded overflow-hidden shadow-lg bg-blue-100 w-2/3 mx-auto mt-10">
       {/* Header */}
       <div className="flex justify-between items-center p-4 border-b">
-        <div>
-          <h2 className="text-xl font-bold text-gray-800">{title}</h2>
+        <div className="px-8 py-4">
+          <h2 className="text-2xl font-bold text-gray-800">{title}</h2>
           <p className="text-gray-600 text-sm">{description}</p>
         </div>
         <Link
@@ -33,7 +33,7 @@ export default function ClassCard({ id, title, description, curriculum }: ClassC
       </div>
 
       {/* Body */}
-      <div className="p-4">
+      <div className="px-12 py-8">
         {/* Course Class Images */}
         <div className="flex space-x-2 overflow-hidden">
           {/* {images.map((image, index) => (
@@ -49,7 +49,7 @@ export default function ClassCard({ id, title, description, curriculum }: ClassC
         {/* Chips Row */}
         <div className="flex justify-between items-center mt-4">
           {/* Left Chips */}
-          <div className="flex space-x-2">
+          <div className="flex space-x-8">
             <div className="bg-gray-100 text-gray-800 text-sm font-semibold py-1 px-3 rounded-full">
               4 Weeks
             </div>
