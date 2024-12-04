@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 :root {
-
+  --background: #f7f7f8;
+  --foreground: #171717;
 }
 
 
@@ -31,6 +32,10 @@ nav a {
   font-family: var(--font-petit-formal);
   font-weight: 800;
   font-style: normal;
+}
+
+form label {
+  font-family: var(--font-lato);
 }
 
 /********************************************** 
