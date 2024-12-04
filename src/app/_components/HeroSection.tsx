@@ -1,8 +1,8 @@
 'use client';
 
+import { UserRole } from '@/constants';
 import Image from "next/image";
 import Link from "next/link";
-import { UserRole } from "../page";
 
 type Portrait = {
   src: string;

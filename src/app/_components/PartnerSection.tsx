@@ -52,7 +52,5 @@ export default function PartnerSection(): JSX.Element {
         }
       </ul>
     </section>
-   
   )
 }
-

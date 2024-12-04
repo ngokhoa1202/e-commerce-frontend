@@ -1,10 +1,10 @@
 "use client";
+
 import AuthApi from '@/api/auth';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 
-
-export default function RegistrationPage(): JSX.Element {
+export default function RegistrationPage() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -15,7 +15,7 @@ export default function RegistrationPage(): JSX.Element {
 
   async function register(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // await AuthApi.register({ username: firstName + lastName, email, password });
+    await AuthApi.register({ username: firstName + lastName, email, password });
     router.replace('/login');
   }
 
@@ -74,7 +74,7 @@ export default function RegistrationPage(): JSX.Element {
         </div>
         <div className="mb-8">
           <label htmlFor="password" className="block mb-2 text-normal font-medium text-gray-900 dark:text-white">
-            Your password 
+            Your password
           </label>
           <input
             type="password"
@@ -105,24 +105,32 @@ export default function RegistrationPage(): JSX.Element {
         <div className="grid grid-cols-3">
 
           <div>
-            <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-8 py-3 text-center">
+            <button
+              type="submit"
+              className="text-white bg-blue-700 hover:bg-blue-800
+              focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-8 py-3 text-center"
+            >
               Register
             </button>
           </div>
 
           <div>
-            <button type="submit" className="text-gray-800 bg-slate-300 hover:bg-slate-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-8 py-3 text-center">
+            <button
+              type="submit"
+              className="text-gray-800 bg-slate-300 hover:bg-slate-400
+              focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-8 py-3 text-center"
+            >
               Reset
             </button>
           </div>
 
-
         </div>
 
-        <a className="absolute font-normal text-normal text-blue-600 hover:text-blue-700 active:text-blue-800 hover:underline hover:underline-offset-4 active:underline active:underline-offset-2 top-4 left-8 flex justify-center items-center" href="/login">
-        
-        <a className="absolute font-normal text-normal text-blue-600 hover:text-blue-700 active:text-blue-800 hover:underline hover:underline-offset-4 active:underline active:underline-offset-2 top-4 left-8 flex justify-center items-center" 
+        <a
           href="/login"
+          className="absolute font-normal text-normal text-blue-600
+          hover:text-blue-700 active:text-blue-800 hover:underline hover:underline-offset-4
+          active:underline active:underline-offset-2 top-4 left-8 flex justify-center items-center"
         >
           &larr; Back to login
         </a>

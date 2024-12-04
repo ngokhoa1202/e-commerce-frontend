@@ -1,20 +1,18 @@
-import {SyntheticEvent } from "react";
-import { UserRole } from "../page";
+import { SyntheticEvent } from 'react';
+import { UserRole } from '@/constants';
 
 export default function GroupTab(
-  {props}: {
+  { props }: {
     props: {
       onChangeUserRole: (e: SyntheticEvent<HTMLButtonElement>) => void,
       currentUserRole: UserRole
     }
   }
-): JSX.Element {
-  
+) {
   const buttonClassname: string = "text-normal font-medium px-4 py-2 w-1/2 text-center rounded-3xl ";
   const selectedButtonClassname: string = "bg-zinc-500 text-gray-200";
   const unselectedButtonClassname: string = "hover:bg-zinc-500 active:bg-zinc-500 hover:text-gray-200 active:text-gray-200";
-  
-  
+
   return (
 
     <section className="mt-20">

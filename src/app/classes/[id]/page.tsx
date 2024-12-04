@@ -1,51 +1,44 @@
-import Image from "next/image";
-import coverImage from "../../_assets/course-cover.png"
-import CurriculumCard from "../../_components/classes/CurriculumCard";
+'use client';
 
-const courseSample = {
-  id: 1,
-  title: "Introduction to Web Development",
-  description: "Learn the basics of web development with HTML, CSS, and JavaScript.",
-  classLink: "/intro-web-dev",
-  curriculum: [
-    {
-      week: 1,
-      description: "HTML Basics",
-      title: "HTML Basics",
-      lessons: [{ title: "HTML5", etc: "1 hour"}, { title: "Tags", etc: "2 hours" }],
-    },
-    {
-      week: 2,
-      description: "CSS Basics",
-      title: "CSS Basics",
-      lessons: [{ title: "Styling with CSS", etc: "1 hour"}, { title: "CSS selectors", etc: "30 minutes" }],
-    },
-    {
-      week: 3,
-      description: "JS Basics",
-      title: "JS Basics",
-      lessons: [{ title: "JavaScript syntax", etc: "1 hour"}, { title: "DOM", etc: "30 minutes" }],
-    },
-  ],
-};
+// import Image from "next/image";
+// import coverImage from "../../_assets/course-cover.png"
+import { useEffect, useState } from 'react';
+import { CourseInfoDto } from '@/dto/course';
+import CourseApi from '@/api/course';
+import CurriculumCard from '@/app/_components/classes/CurriculumCard';
 
-export default async function Page({ params }: { params: Promise<{ id: string }>}) {
-  const { id } = (await params);
-  const course = await fetch(`https://tienclay.me/ecommerce/courses/${id}`);
-  console.log(course);
-  return (
-    <section className="container mx-auto p-8 max-w-[1400px] flex flex-col gap-8">
-      <div className="grid grid-cols-2 py-4 gap-4">
-        <h1 className="text-4xl font-bold">{courseSample.title}</h1>
-        <p>{courseSample.description}</p>
-      </div>
-      <hr/>
-      {/* <Image alt="Cover" src={coverImage} className="my-8"/> */}
-      <div className="grid grid-cols-2 gap-8">
-        {courseSample.curriculum.map((week, idx) => (
-          <CurriculumCard key={idx} curriculum={week} />
-        ))}
-      </div>
-    </section>
-  );
+function isCourse(course: CourseInfoDto | object): course is CourseInfoDto {
+  return !!(course as CourseInfoDto).id;
+}
+
+export default function Page({ params }: { params: Promise<{ id: string }>}) {
+  const [course, setCourse] = useState<CourseInfoDto | object>(() => ({}));
+
+  useEffect(() => {
+    async function helper() {
+      const { id } = (await params);
+      const fetchedCourse = await CourseApi.getById(id);
+      console.log(fetchedCourse);
+      setCourse(fetchedCourse);
+    }
+
+    helper();
+  }, [params]);
+
+  return isCourse(course)
+    ? (
+      <main className="container mx-auto p-8 flex flex-col gap-8">
+        <div className="grid grid-cols-2 py-4 gap-4">
+          <p className="text-4xl font-bold">{course.name}</p>
+          <p>{course.description}</p>
+        </div>
+        <hr />
+        {/* <Image alt="Cover" src={coverImage} className="my-8"/> */}
+        <div className="grid grid-cols-2 gap-8">
+          {course.curriculum.map((week) => <CurriculumCard key={week.week} curriculum={week} />)}
+        </div>
+      </main>
+    ) : (
+      <div>temp</div>
+    );
 }

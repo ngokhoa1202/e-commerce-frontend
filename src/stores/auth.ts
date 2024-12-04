@@ -1,4 +1,5 @@
-import { create } from 'zustand'
+import { createStore } from 'zustand/vanilla';
+import { persist } from 'zustand/middleware';
 
 export type AuthState = {
   userId: string
@@ -18,11 +19,16 @@ export const initialState: AuthState = {
   userId: '',
   accessToken: '',
   refreshToken: '',
-}
+};
 
-export const useAuthStore = create<AuthStore>((set) => ({
-  ...initialState,
-  setUserId: (userId: string) => set({ userId }),
-  setAccessToken: (accessToken: string) => set({ accessToken }),
-  setRefreshToken: (refreshToken: string) => set({ refreshToken }),
-}));
+export const authStore = createStore<AuthStore>()(
+  persist(
+    (set) => ({
+      ...initialState,
+      setUserId: (userId: string) => set({ userId }),
+      setAccessToken: (accessToken: string) => set({ accessToken }),
+      setRefreshToken: (refreshToken: string) => set({ refreshToken }),
+    }),
+    { name: 'auth-storage' },
+  ),
+);
