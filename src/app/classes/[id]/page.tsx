@@ -36,7 +36,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
   return (
     <main className="container mx-auto p-8 max-w-[1400px] flex flex-col gap-8">
       <div className="grid grid-cols-2 py-4 gap-4">
-        <p className="text-4xl font-bold">{courseSample.title}</p>
+        <h1 className="text-4xl font-bold">{courseSample.title}</h1>
         <p>{courseSample.description}</p>
       </div>
       <hr/>
