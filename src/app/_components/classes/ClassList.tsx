@@ -17,7 +17,7 @@ interface ClassListProps {
 
 function ClassList({ classes }: ClassListProps) {
   return (
-    <div className="space-y-4">
+    <div className="mt-8 grid grid-cols-2 gap-x-12 gap-y-16 col-span-10 overflow-hidden">
       {classes.map((Class) => (
         <ClassCard
           key={Class.id}

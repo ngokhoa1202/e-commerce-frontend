@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import Link from 'next/link';
 
@@ -17,25 +18,25 @@ interface ClassCardProps {
 
 export default function ClassCard({ id, title, description, curriculum }: ClassCardProps) {
   return (
-    <div className="rounded overflow-hidden shadow-lg bg-white">
+    <div className="rounded overflow-hidden shadow-2xl bg-blue-100 w-full mx-auto">
       {/* Header */}
-      <div className="flex justify-between items-center p-4 border-b">
-        <div>
-          <h2 className="text-xl font-bold text-gray-800">{title}</h2>
+      <div className="grid grid-cols-12 px-2 py-4 border-b min-h-40">
+        <div className="px-8 py-4 col-span-9 self-center">
+          <h2 className="text-2xl font-bold text-gray-800">{title}</h2>
           <p className="text-gray-600 text-sm">{description}</p>
         </div>
         <Link
           href={`/classes/${id}`}
-          className="text-blue-500 font-semibold hover:text-blue-700"
+          className="text-blue-500 font-semibold hover:text-blue-700 col-span-3 block self-center text-center"
         >
           View Detail
         </Link>
       </div>
 
       {/* Body */}
-      <div className="p-4">
+      <div className="px-4 py-8 min-h-16">
         {/* Course Class Images */}
-        <div className="flex space-x-2 overflow-hidden">
+        <div className="flex overflow-hidden">
           {/* {images.map((image, index) => (
             <img
               key={index}
@@ -49,7 +50,7 @@ export default function ClassCard({ id, title, description, curriculum }: ClassC
         {/* Chips Row */}
         <div className="flex justify-between items-center mt-4">
           {/* Left Chips */}
-          <div className="flex space-x-2">
+          <div className="flex space-x-4">
             <div className="bg-gray-100 text-gray-800 text-sm font-semibold py-1 px-3 rounded-full">
               4 Weeks
             </div>
@@ -64,13 +65,13 @@ export default function ClassCard({ id, title, description, curriculum }: ClassC
           </div>
         </div>
         {/* Curriculum */}
-        <div className="mt-4">
+        <div className="mt-4 px-4">
           <h3 className="text-lg font-semibold text-gray-800">Curriculum</h3>
-          <div className="flex space-x-4 overflow-x-auto mt-2">
+          <div className="grid grid-cols-3 gap-x-4 gap-y-6 mt-4 min-h-16">
             {curriculum.map((item, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 bg-gray-100 p-3 rounded-md shadow text-center w-36 max-w-sm"
+                className="bg-gray-100 p-1 rounded-md shadow text-center max-w-sm min-h-10"
               >
                 <div className="text-blue-500 font-bold">Week {item.week}</div>
                 <p className="text-gray-600 text-sm mt-1 overflow-hidden break-words">{item.description}</p>

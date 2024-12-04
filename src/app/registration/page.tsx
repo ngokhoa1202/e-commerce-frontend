@@ -120,6 +120,10 @@ export default function RegistrationPage(): JSX.Element {
         </div>
 
         <a className="absolute font-normal text-normal text-blue-600 hover:text-blue-700 active:text-blue-800 hover:underline hover:underline-offset-4 active:underline active:underline-offset-2 top-4 left-8 flex justify-center items-center" href="/login">
+        
+        <a className="absolute font-normal text-normal text-blue-600 hover:text-blue-700 active:text-blue-800 hover:underline hover:underline-offset-4 active:underline active:underline-offset-2 top-4 left-8 flex justify-center items-center" 
+          href="/login"
+        >
           &larr; Back to login
         </a>
       </form>

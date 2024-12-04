@@ -125,10 +125,10 @@ export default function Page() {
 
   return (
     <div className="flex flex-col px-12 gap-8">
-      <div>
-        <h1>Our Pricings</h1>
+      <div className="mt-12">
+        <h1 className="font-bold text-4xl text-center">Our Pricings</h1>
       </div>
-      <hr/>
+      
 
       <div className="w-fit self-center px-4 py-3 bg-white rounded mt-8">
         <button
@@ -151,8 +151,14 @@ export default function Page() {
 
       <div className="flex px-12 py-20 bg-white gap-6 rounded-lg mt-8">
         <div className="basis-1/3">
-          <p className="font-bold text-4xl mb-4">Frequently Asked Questions</p>
-          <p>Still you have any questions? Contact our Team via support@skillbridge.com</p>
+          <h2 className="font-bold text-4xl mb-4">Frequently Asked Questions</h2>
+          <p>
+            Still you have any questions?
+            <br />
+            Contact our Team via &nbsp;
+            <a href="mailto:support@zetstudy.com" 
+              className="text-blue-500 hover:text-blue-700 active:text-blue-700">support@zetstudy.com</a>
+           </p>
           <button className="rounded border py-4 px-6 mt-8">See All FAQ</button>
         </div>
           <div className="basis-2/3 flex flex-col items-center px-8 rounded-lg gap-8">
