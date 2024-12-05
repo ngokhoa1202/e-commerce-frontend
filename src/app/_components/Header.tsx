@@ -16,6 +16,7 @@ const navigation = [
 
 export default function Header() {
   const { accessToken, setAccessToken } = authStore.getState();
+
   const [isAuthed, setIsAuthed] = useState(false);
   const router = useRouter();
 
@@ -31,6 +32,7 @@ export default function Header() {
     setAccessToken('');
     router.refresh();
   }
+
 
   return (
     <header>
@@ -68,12 +70,22 @@ export default function Header() {
           <button
             type="button"
             onClick={() => (isAuthed ? logout() : login())}
-            className="text-lg font-semibold p-2 rounded-lg bg-blue-600 text-white hover:shadow-lg hover:bg-blue-800"
+            className="block text-lg font-semibold px-5 py-2 rounded-lg bg-blue-600 text-white hover:shadow-lg hover:bg-blue-800"
           >
             {
               isAuthed
-                ? <ArrowRightStartOnRectangleIcon width={60} height={20} />
-                : <ArrowRightEndOnRectangleIcon width={60} height={20} />
+                ? (
+                  <div>
+                    <span className="inline-block mr-3">Logout</span>
+                    <ArrowRightStartOnRectangleIcon width={24} height={24} className="inline-block" />
+                  </div>
+                )
+                : (
+                  <div>
+                    <span className="inline-block mr-3">Login</span>
+                    <ArrowRightStartOnRectangleIcon width={24} height={24} className="inline-block" />
+                  </div>
+                )
             }
           </button>
         </div>

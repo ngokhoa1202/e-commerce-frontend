@@ -13,7 +13,7 @@ export default function Homepage() {
 
   const changeUserRole = (e: SyntheticEvent<HTMLButtonElement>) => {
     if (ROLES.includes(e.currentTarget.value)) {
-      setUserRole(UserRole[e.currentTarget.value as keyof typeof UserRole]);
+      setUserRole(e.currentTarget.value as UserRole);
     }
   };
 
