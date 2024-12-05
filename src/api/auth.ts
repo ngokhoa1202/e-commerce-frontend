@@ -1,5 +1,8 @@
+import { UserRole } from "@/constants";
+
 const BE_URL = process.env.NEXT_PUBLIC_BE_URL;
 
+console.log(BE_URL);
 export default class AuthApi {
   static async login(input: { email: string, password: string }): Promise<{ accessToken: string, refreshToken: string }> {
     const response = await fetch(`${BE_URL}/auth/login`, {
@@ -11,7 +14,7 @@ export default class AuthApi {
     return data;
   }
 
-  static async register(input: { username: string, email: string, password: string }): Promise<void> {
+  static async register(input: { username: string, email: string, password: string, role: UserRole | null }): Promise<void> {
     const response = await fetch(`${BE_URL}/auth/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

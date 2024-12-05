@@ -9,9 +9,9 @@ export default function GroupTab(
     }
   }
 ) {
-  const buttonClassname: string = "text-normal font-medium px-4 py-2 w-1/2 text-center rounded-3xl ";
-  const selectedButtonClassname: string = "bg-zinc-500 text-gray-200";
-  const unselectedButtonClassname: string = "hover:bg-zinc-500 active:bg-zinc-500 hover:text-gray-200 active:text-gray-200";
+  const buttonClassname: string = 'text-normal font-medium px-4 py-2 w-1/2 text-center rounded-3xl ';
+  const selectedButtonClassname: string = 'bg-zinc-500 text-gray-200';
+  const unselectedButtonClassname: string = 'hover:bg-zinc-500 active:bg-zinc-500 hover:text-gray-200 active:text-gray-200';
 
   return (
 
@@ -27,12 +27,12 @@ export default function GroupTab(
 
       <div className="hidden sm:block">
         <nav className="flex bg-zinc-200 rounded-3xl w-64 mx-auto" aria-label="Tabs">
-          
           <button
-            className={(props.currentUserRole === UserRole.Parent) ? (buttonClassname + selectedButtonClassname) 
+            className={(props.currentUserRole === UserRole.Student) ? (buttonClassname + selectedButtonClassname) 
               : buttonClassname + unselectedButtonClassname}
-            value={UserRole.Parent}
+            value={UserRole.Student}
             onClick={(e) => props.onChangeUserRole(e)}
+            type="button"
           >
             For students
           </button>
@@ -42,6 +42,7 @@ export default function GroupTab(
               : buttonClassname + unselectedButtonClassname}
             value={UserRole.Tutor}
             onClick={(e) => props.onChangeUserRole(e)}
+            type="button"
           >
             For tutors
           </button>
