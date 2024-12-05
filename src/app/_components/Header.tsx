@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
 import { authStore } from '@/stores/auth';
 import { ArrowRightEndOnRectangleIcon, ArrowRightStartOnRectangleIcon } from '@heroicons/react/24/outline';
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const navigation = [
-  { name: "Home", href: "/" },
-  { name: "Classes", href: "/classes" },
-  { name: "Pricing", href: "/pricing" },
-  { name: "About us", href: "/about" },
+  { name: 'Home', href: '/' },
+  { name: 'Classes', href: '/classes' },
+  { name: 'Pricing', href: '/pricing' },
+  { name: 'About us', href: '/about' },
 ];
 
 export default function Header() {
@@ -72,8 +72,8 @@ export default function Header() {
           >
             {
               isAuthed
-                ? <ArrowRightStartOnRectangleIcon width={20} height={20} />
-                : <ArrowRightEndOnRectangleIcon width={20} height={20} />
+                ? <ArrowRightStartOnRectangleIcon width={60} height={20} />
+                : <ArrowRightEndOnRectangleIcon width={60} height={20} />
             }
           </button>
         </div>
