@@ -1,5 +1,26 @@
 import { Span } from "next/dist/trace";
 
+function AchievementCard({ title, description, icon }: any) {
+  return (
+    <div className="bg-white p-6 rounded-lg shadow-md text-left">
+      <div className="text-3xl">{icon}</div>
+      <h4 className="mt-4 font-semibold text-lg">{title}</h4>
+      <p className="text-gray-600 mt-2">{description}</p>
+    </div>
+  );
+}
+
+function GoalCard({ title, description, icon }: any) {
+  return (
+    <div className="bg-white p-6 rounded-lg shadow-md text-left">
+      <div className="text-3xl">{icon}</div>
+      <h4 className="mt-4 font-semibold text-lg">{title}</h4>
+      <p className="text-gray-600 mt-2">{description}</p>
+    </div>
+  );
+}
+
+
 export default function AboutUs() {
   return (
     <>
@@ -10,8 +31,7 @@ export default function AboutUs() {
             About Us
           </h1>
           <p className="text-lg text-gray-600 mb-8 mx-auto md:mx-0 text-left md:text-left max-w-md md:max-w-2xl">
-            Welcome to our platform, where we are passionate about empowering
-            individuals to master the world of design and development. We offer
+            Welcome to our platform, where we are passionate about fulfill our potential. We offer
             a wide range of online courses designed to equip learners with the
             skills and knowledge needed to succeed in the ever-evolving digital
             landscape.
@@ -110,25 +130,5 @@ export default function AboutUs() {
         </div>
       </section>
     </>
-  );
-}
-
-function AchievementCard({ title, description, icon }: any) {
-  return (
-    <div className="bg-white p-6 rounded-lg shadow-md text-left">
-      <div className="text-3xl">{icon}</div>
-      <h4 className="mt-4 font-semibold text-lg">{title}</h4>
-      <p className="text-gray-600 mt-2">{description}</p>
-    </div>
-  );
-}
-
-function GoalCard({ title, description, icon }: any) {
-  return (
-    <div className="bg-white p-6 rounded-lg shadow-md text-left">
-      <div className="text-3xl">{icon}</div>
-      <h4 className="mt-4 font-semibold text-lg">{title}</h4>
-      <p className="text-gray-600 mt-2">{description}</p>
-    </div>
   );
 }

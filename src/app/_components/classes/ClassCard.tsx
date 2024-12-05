@@ -3,6 +3,12 @@
 import React from 'react';
 import Link from 'next/link';
 import { CourseInfoDto } from '@/dto/course';
+import Image from 'next/image';
+
+interface ClassImage {
+  src: string;
+  alt: string;
+}
 
 export default function ClassCard({ course }: { course: CourseInfoDto }) {
   const {
@@ -10,8 +16,15 @@ export default function ClassCard({ course }: { course: CourseInfoDto }) {
   } = course;
   const fee = fees.length ? fees[0].feeAmount : 0;
 
+  const classImage: ClassImage = {
+    src: '/classes/class-1.webp',
+    alt: 'Our class\' facility',
+  };
+
+  
+
   return (
-    <div className="rounded overflow-hidden shadow-2xl bg-blue-100 w-full mx-auto">
+    <div className="rounded-2xl overflow-hidden shadow-2xl from-blue-100 bg-gradient-to-br to-blue-200  border border-zinc-500 w-full mx-auto">
       {/* Header */}
       <div className="flex justify-between items-center p-4 border-b">
         <div>
@@ -30,14 +43,13 @@ export default function ClassCard({ course }: { course: CourseInfoDto }) {
       <div className="px-4 py-8 min-h-16">
         {/* Course Class Images */}
         <div className="flex overflow-hidden">
-          {/* {images.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Course class ${index + 1}`}
-              className="w-16 h-16 rounded"
-            />
-          ))} */}
+          <Image 
+            src={classImage.src}
+            alt={classImage.alt}
+            width={200}
+            height={120}
+            className="object-cover w-full h-auto rounded-xl"
+          />
         </div>
 
         {/* Chips Row */}
@@ -58,11 +70,21 @@ export default function ClassCard({ course }: { course: CourseInfoDto }) {
           </div>
         </div>
 
-        <div className="p-2 text-yellow-600 text-lg">
-          $
-          {fee}
-        </div>
+        <div className="flex flex-row gap-8 mt-8">
+          <div className="px-6 py-2 bg-zinc-500 text-gray-100 text-lg rounded-lg">
+            $
+            {fee}
+          </div>
 
+          <div className="px-6 py-2 bg-zinc-500 text-gray-100 text-lg rounded-lg">
+            Rating: 4.7 / 5
+          </div>
+
+          <div className="px-6 py-2 bg-zinc-500 text-gray-100 text-lg rounded-lg">
+            20 slots left
+          </div>
+        </div>
+       
         {/* Curriculum */}
         <div className="mt-4 px-4">
           <h3 className="text-lg font-semibold text-gray-800">Curriculum</h3>
