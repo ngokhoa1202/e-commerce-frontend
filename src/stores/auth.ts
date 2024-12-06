@@ -26,7 +26,10 @@ export const authStore = createStore<AuthStore>()(
     (set) => ({
       ...initialState,
       setUserId: (userId: string) => set({ userId }),
-      setAccessToken: (accessToken: string) => set({ accessToken }),
+      setAccessToken: (accessToken: string) => {
+        const token = accessToken ? `Bearer ${accessToken}` : '';
+        return set({ accessToken: token });
+      },
       setRefreshToken: (refreshToken: string) => set({ refreshToken }),
     }),
     { name: 'auth-storage' },
