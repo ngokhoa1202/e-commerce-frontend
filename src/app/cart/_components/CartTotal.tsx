@@ -31,14 +31,15 @@ export default function CartTotal() {
         className="bg-blue-600 text-white py-2 text-lg rounded"
         onClick={async () => {
           const orderId = orders[0].id;
-          const url = 'http://localhost:3031/';
+          const returnUrl = 'http://localhost:3031/checkout/success';
+          const cancelUrl = 'http://localhost:3031/checkout/cancel';
           const response = await fetch('https://tienclay.me/ecommerce/payments/create', {
             method: 'POST',
             headers: {
               Authorization: accessToken,
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ orderId, returnUrl: url, cancelUrl: url }),
+            body: JSON.stringify({ orderId, returnUrl, cancelUrl }),
           });
           const { data } = await response.json();
           if (data && data.checkoutUrl) router.push(data.checkoutUrl);
