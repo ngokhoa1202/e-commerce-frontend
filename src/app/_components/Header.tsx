@@ -1,7 +1,7 @@
 'use client';
 
 import { authStore } from '@/stores/auth';
-import { ArrowRightEndOnRectangleIcon, ArrowRightStartOnRectangleIcon } from '@heroicons/react/24/outline';
+import { ArrowRightEndOnRectangleIcon, ArrowRightStartOnRectangleIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -32,7 +32,6 @@ export default function Header() {
     setAccessToken('');
     router.refresh();
   }
-
 
   return (
     <header>
@@ -66,7 +65,14 @@ export default function Header() {
           ))}
         </div>
 
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-2">
+          <Link
+            href="/cart"
+            className="px-3 py-2 text-black hover:shadow-lg hover:bg-blue-600 hover:text-white rounded-lg"
+          >
+            <ShoppingCartIcon width={24} height={24} className="inline-block" />
+          </Link>
+
           <button
             type="button"
             onClick={() => (isAuthed ? logout() : login())}
@@ -83,7 +89,7 @@ export default function Header() {
                 : (
                   <div>
                     <span className="inline-block mr-3">Login</span>
-                    <ArrowRightStartOnRectangleIcon width={24} height={24} className="inline-block" />
+                    <ArrowRightEndOnRectangleIcon width={24} height={24} className="inline-block" />
                   </div>
                 )
             }
