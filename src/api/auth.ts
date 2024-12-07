@@ -2,7 +2,6 @@ import { UserRole } from "@/constants";
 
 const BE_URL = process.env.NEXT_PUBLIC_BE_URL;
 
-console.log(BE_URL);
 export default class AuthApi {
   static async login(input: { email: string, password: string }): Promise<{ accessToken: string, refreshToken: string }> {
     const response = await fetch(`${BE_URL}/auth/login`, {

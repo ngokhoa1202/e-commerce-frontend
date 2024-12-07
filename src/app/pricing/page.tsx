@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from 'react';
 import {
@@ -7,53 +7,53 @@ import {
 
 const plans = [
   {
-    id: "free",
-    name: "Free Plan",
+    id: 'free',
+    name: 'Free Plan',
     monthlyPrice: 0,
     yearlyPrice: 0,
     features: [
-      "Access to selected free courses.",
-      "Limited course materials and resources.",
-      "Basic community support.",
-      "No certification upon completion.",
-      "Ad-supported platform.",
+      'Access to selected free courses.',
+      'Limited course materials and resources.',
+      'Basic community support.',
+      'No certification upon completion.',
+      'Ad-supported platform.',
     ],
   },
   {
-    id: "pro",
-    name: "Pro Plan",
+    id: 'pro',
+    name: 'Pro Plan',
     monthlyPrice: 79,
     yearlyPrice: 70,
     features: [
-      "Unlimited access to all courses.",
-      "Unlimited course materials and resources.",
-      "Priority support from instructors.",
-      "Course completion certificates.",
-      "Ad-free experience.",
-      "Access to exclusive Pro Plan community forums.",
-      "Early access to new courses and updates.",
+      'Unlimited access to all courses.',
+      'Unlimited course materials and resources.',
+      'Priority support from instructors.',
+      'Course completion certificates.',
+      'Ad-free experience.',
+      'Access to exclusive Pro Plan community forums.',
+      'Early access to new courses and updates.',
     ],
   },
 ];
 
 const faqs = [
   {
-    id: "1",
-    question: "Can I enroll in multiple courses at once?",
-    answer: "Absolutely! You can enroll in multiple courses simultaneously and access them at your convenience.",
-    link: "Enrollment Process for Different Courses",
+    id: '1',
+    question: 'Can I enroll in multiple courses at once?',
+    answer: 'Absolutely! You can enroll in multiple courses simultaneously and access them at your convenience.',
+    link: 'Enrollment Process for Different Courses',
   },
   {
-    id: "2",
-    question: "Can I enroll in multiple courses at once?",
-    answer: "Absolutely! You can enroll in multiple courses simultaneously and access them at your convenience.",
-    link: "Enrollment Process for Different Courses",
+    id: '2',
+    question: 'Can I enroll in multiple courses at once?',
+    answer: 'Absolutely! You can enroll in multiple courses simultaneously and access them at your convenience.',
+    link: 'Enrollment Process for Different Courses',
   },
   {
-    id: "3",
-    question: "Can I enroll in multiple courses at once?",
-    answer: "Absolutely! You can enroll in multiple courses simultaneously and access them at your convenience.",
-    link: "Enrollment Process for Different Courses",
+    id: '3',
+    question: 'Can I enroll in multiple courses at once?',
+    answer: 'Absolutely! You can enroll in multiple courses simultaneously and access them at your convenience.',
+    link: 'Enrollment Process for Different Courses',
   },
 ];
 
@@ -79,7 +79,10 @@ function PlanCard({ plan, isMonthly }: { plan: Plan, isMonthly: boolean }) {
           $
           {isMonthly ? plan.monthlyPrice : plan.yearlyPrice}
         </span>
-        <span className="text-lg">/month</span>
+        <span className="text-lg">
+          /
+          {isMonthly ? 'month' : 'year'}
+        </span>
       </div>
       <div className="flex flex-col bg-white p-8 w-full gap-4 rounded-t-lg h-full">
         <p className="text-center text-lg font-bold mb-4">Available Features</p>
@@ -141,9 +144,9 @@ function FaqCard({ faq }: { faq: FAQ }) {
 
 export default function Page() {
   const [isMonthly, setIsMonthly] = useState(true);
-  const buttonClassName = " p-2 font-medium px-4 py-2 w-fit text-center rounded hover:bg-blue-200 hover:text-black";
-  const selectedButtonClassName = "bg-blue-600 text-white";
-  const unselectedButtonClassName = "text-black";
+  const buttonClassName = ' p-2 font-medium px-4 py-2 w-fit text-center rounded hover:bg-blue-200 hover:text-black';
+  const selectedButtonClassName = 'bg-blue-600 text-white';
+  const unselectedButtonClassName = 'text-black';
 
   return (
     <div className="container mx-auto flex flex-col px-12 gap-8">
