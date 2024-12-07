@@ -8,6 +8,7 @@ import { authStore, orderStore } from '@/stores';
 import { OrderStatus } from '@/constants';
 import OrderList from './_components/OrderList';
 import CartTotal from './_components/CartTotal';
+import CourseFeeApi from '@/api/courseFee';
 
 const sampleOrders: OrderDto[] = [
   {
@@ -50,19 +51,26 @@ for (let i = 2; i <= 5; i += 1) {
 }
 
 export default function Page() {
-  const [isFetching, setIsFetching] = useState(true);
-
-  const { setOrders } = orderStore.getState();
+  const { setOrders, setCourseFees, setCourseFee } = orderStore.getState();
   const { accessToken } = authStore.getState();
 
   useEffect(() => {
     async function fetchData() {
-      const fetchedOrders = await OrderApi.getByUser(accessToken);
-      setOrders([...sampleOrders, ...(fetchedOrders || [])]);
-      setIsFetching(false);
+      setCourseFees({});
+      const fetchedOrders = await OrderApi.getByUser(accessToken) || [];
+      await Promise.all(fetchedOrders.map(async (order) => {
+        const courseFee = await CourseFeeApi.getById(order.courseFeeId);
+        const fee = parseInt(courseFee.feeAmount, 10);
+        order.fee = fee;
+        setCourseFee(order.courseId, fee);
+      }));
+      setOrders([
+        // ...sampleOrders,
+        ...(fetchedOrders || []),
+      ]);
     }
     fetchData();
-  }, [accessToken, setOrders]);
+  }, [accessToken, setOrders, setCourseFees, setCourseFee]);
 
   return (
     <main className="container mx-auto px-8">

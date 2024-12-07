@@ -69,9 +69,9 @@ export default function HeroSection(
       currentUserRole: UserRole
     }
   } 
-): JSX.Element {
+) {
   
-  const title: JSX.Element = (props.currentUserRole === UserRole.Parent)
+  const title = (props.currentUserRole === UserRole.Student)
     ? (
       <div>
         <span className="brand-name text-blue-800 drop-shadow-sm">Invest</span> in your promising future
@@ -83,7 +83,7 @@ export default function HeroSection(
       </div>
     );
 
-  const facilitySlogan: JSX.Element = (props.currentUserRole === UserRole.Tutor)
+  const facilitySlogan = (props.currentUserRole === UserRole.Tutor)
     ? (
       <div>
         With our <span className="text-blue-700 drop-shadow">high-quality English-spoken</span> tutoring classes
@@ -95,7 +95,7 @@ export default function HeroSection(
       </div>
     );
 
-  const potraits: Array<JSX.Element> = (props.currentUserRole === UserRole.Parent)
+  const potraits = (props.currentUserRole === UserRole.Student)
     ? (
       parentPortraits.map((portrait, idx) => (
           <li key={idx} className="h-full -mr-2">
@@ -127,7 +127,7 @@ export default function HeroSection(
     )
   );
 
-  const customerFigure: JSX.Element = (props.currentUserRole === UserRole.Parent)
+  const customerFigure = (props.currentUserRole === UserRole.Student)
     ? (
       <p className="text-center mt-2">
         <span className="text-blue-800 font-semibold text-xl">10 000</span> parents registration last year

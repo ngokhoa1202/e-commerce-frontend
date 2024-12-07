@@ -8,12 +8,11 @@ import { OrderDto } from '@/dto/order';
 import { StarIcon } from '@heroicons/react/24/solid';
 
 export default function CartTotal() {
-  const { orders } = orderStore.getState();
   const [total, setTotal] = useState(0);
+  const { courseFees, orders } = orderStore.getState();
 
   useEffect(() => {
-    const amount = orders.reduce((res, order) => res + (order.courseFee?.feeAmount || 0), 0);
-    setTotal(amount);
+    setTotal(Object.values(orders).reduce((res, { fee }) => res + (fee || 0), 0));
   }, [orders]);
 
   return (
