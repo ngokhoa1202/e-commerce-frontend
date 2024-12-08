@@ -69,14 +69,14 @@ export default function AboutUs() {
           Our Goals
         </h2>
         <p className="text-gray-600 text-left">
-          At SkillBridge, our goal is to empower individuals from all
+          At ZetStudy, our goal is to empower individuals from all
           backgrounds to thrive in the world of design and development. We
           believe that education should be accessible and transformative,
           enabling learners to pursue their passions and make a meaningful
           impact.
         </p>
         <br />
-        <div className="grid grid-cols-1 md:grid-cols-2  gap-x-20 gap-y-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-10">
           <GoalCard
             title={<span className="text-blue-500">Provide Practical Skills</span>}
             description="We focus on delivering practical skills that are relevant to the current industry demands. Our courses are designed to equip learners
