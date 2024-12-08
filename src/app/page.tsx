@@ -10,7 +10,6 @@ import TestimonialSection from './_components/TestimonialSection';
 
 export default function Homepage() {
   const [userRole, setUserRole] = useState(UserRole.Student);
-  console.warn(userRole);
 
   const changeUserRole = (e: SyntheticEvent<HTMLButtonElement>) => {
     if (ROLES.includes(e.currentTarget.value)) {

@@ -3,6 +3,7 @@
 import { UserRole } from '@/constants';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ReactElement } from 'react';
 
 type Portrait = {
   src: string;
@@ -69,11 +70,8 @@ export default function HeroSection(
       currentUserRole: UserRole
     }
   },
-): JSX.Element {
-  
-  console.log(props.currentUserRole);
-
-  const title: JSX.Element = (props.currentUserRole === UserRole.Student)
+) {
+  const title: ReactElement = (props.currentUserRole === UserRole.Student)
     ? (
       <div>
         <span className="brand-name text-blue-800 drop-shadow-sm">Invest</span>
@@ -89,12 +87,12 @@ export default function HeroSection(
       </div>
     );
 
-  const facilitySlogan: JSX.Element = (props.currentUserRole === UserRole.Tutor)
+  const facilitySlogan: ReactElement = (props.currentUserRole === UserRole.Tutor)
     ? (
       <div>
         With our
         {' '}
-        <span className="text-blue-700 drop-shadow">high-quality English-spoken</span>
+        <span className="text-blue-700 drop-shadow">high-quality infrastructure &amp; LMS</span>
         {' '}
         tutoring classes
       </div>
@@ -103,11 +101,11 @@ export default function HeroSection(
       <div>
         With our
         {' '}
-        <span className="text-blue-700 drop-shadow">high-quality infrastructure &amp; LMS</span>
+        <span className="text-blue-700 drop-shadow">high-quality English-spoken</span>
       </div>
     );
 
-  const potraits: Array<JSX.Element> = (props.currentUserRole === UserRole.Parent)
+  const potraits: Array<ReactElement> = (props.currentUserRole === UserRole.Student)
     ? (
       parentPortraits.map((portrait, idx) => (
         <li key={idx} className="h-full -mr-2">
@@ -137,7 +135,7 @@ export default function HeroSection(
       ))
     );
 
-  const customerFigure: JSX.Element = (props.currentUserRole === UserRole.Parent)
+  const customerFigure = (props.currentUserRole === UserRole.Parent)
     ? (
       <p className="text-center mt-2">
         <span className="text-blue-800 font-semibold text-xl">10 000</span>
