@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import CourseApi from '@/api/course';
 import { CourseInfoDto } from '@/dto/course';
-import ClassList from '../_components/classes/ClassList';
+import ClassList from './_components/ClassList';
 
 const sampleCourses: CourseInfoDto[] = [
   {

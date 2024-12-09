@@ -20,8 +20,8 @@ export default function GroupTab(
         <label htmlFor="Tab" className="sr-only">Tab</label>
 
         <select id="Tab" className="w-full rounded-md border-gray-200" >
-          <option defaultChecked value="Parent">For students</option>
-          <option value="Tutor">For tutors</option>
+          <option defaultChecked value="STUDENT">For students</option>
+          <option value="TUTOR">For tutors</option>
         </select>
       </div>
 

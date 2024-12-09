@@ -5,7 +5,7 @@
 import { useEffect, useState } from 'react';
 import { CourseInfoDto } from '@/dto/course';
 import CourseApi from '@/api/course';
-import CurriculumCard from '@/app/_components/classes/CurriculumCard';
+import CurriculumCard from '@/app/classes/_components/CurriculumCard';
 import OrderApi from '@/api/order';
 import { authStore, orderStore } from '@/stores';
 import { OrderStatus } from '@/constants';
