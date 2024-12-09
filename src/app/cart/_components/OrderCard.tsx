@@ -1,9 +1,14 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { OrderDto } from '@/dto/order';
 import { StarIcon } from '@heroicons/react/24/solid';
+import CourseApi from '@/api/course';
+import CourseFeeApi from '@/api/courseFee';
+import { authStore, orderStore } from '@/stores';
+import OrderApi from '@/api/order';
+import { useRouter } from 'next/navigation';
 
 interface ClassImage {
   src: string;
@@ -12,9 +17,32 @@ interface ClassImage {
 
 export default function OrderCard({ order }: { order: OrderDto }) {
   const {
-    id, course, courseFee,
+    id, courseFeeId, courseId,
   } = order;
-  const amount = courseFee?.feeAmount || 20;
+
+  // const [isFetching, setIsFetching] = useState(true);
+  const [course, setCourse] = useState(() => ({
+    name: '',
+    duration: '',
+  }));
+  const [amount, setAmount] = useState(0);
+  const [fetchCount, setFetchCount] = useState(0);
+  const router = useRouter();
+
+  const { setCourseFee, setOrders, setCourseFees } = orderStore.getState();
+  const { accessToken } = authStore.getState();
+
+  useEffect(() => {
+    async function helper() {
+      const courseFee = await CourseFeeApi.getById(courseFeeId);
+      const fee = parseInt(courseFee.feeAmount, 10);
+      setAmount(fee);
+      const fetchedCourse = await CourseApi.getById(courseId);
+      setCourse(fetchedCourse);
+      setCourseFee(courseId, fee);
+    }
+    helper();
+  }, [fetchCount]);
 
   const classImage: ClassImage = {
     src: '/classes/class-1.webp',
@@ -58,6 +86,21 @@ export default function OrderCard({ order }: { order: OrderDto }) {
         </div>
         <button
           type="button"
+          onClick={async () => {
+            await OrderApi.remove(accessToken, id);
+            setCourseFees({});
+            const fetchedOrders = await OrderApi.getByUser(accessToken) || [];
+            await Promise.all(fetchedOrders.map(async (order) => {
+              const courseFee = await CourseFeeApi.getById(order.courseFeeId);
+              const fee = parseInt(courseFee.feeAmount, 10);
+              order.fee = fee;
+              setCourseFee(order.courseId, fee);
+            }));
+            setOrders([
+              // ...sampleOrders,
+              ...(fetchedOrders || []),
+            ]);
+          }}
           className="text-blue-500 hover:text-blue-700"
         >
           Remove

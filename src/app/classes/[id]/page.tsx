@@ -7,11 +7,12 @@ import { CourseInfoDto } from '@/dto/course';
 import CourseApi from '@/api/course';
 import CurriculumCard from '@/app/classes/_components/CurriculumCard';
 import OrderApi from '@/api/order';
-import { authStore } from '@/stores/auth';
+import { authStore, orderStore } from '@/stores';
 import { OrderStatus } from '@/constants';
+import CourseFeeApi from '@/api/courseFee';
 
 const sampleCourse = {
-  id: '1',
+  id: 'c4a5062f-b2c3-4b6b-8b9f-140d4c840669',
   name: 'Introduction to Web Development',
   description: 'Learn the basics of web development with HTML, CSS, and JavaScript.',
   subject: '',
@@ -49,15 +50,14 @@ const sampleCourse = {
 
 export default function Page({ params }: { params: Promise<{ id: string }>}) {
   const [course, setCourse] = useState<CourseInfoDto>(() => sampleCourse);
+  const { setOrders, setCourseFees, setCourseFee } = orderStore.getState();
 
-  const { userId } = authStore.getState();
+  const { accessToken } = authStore.getState();
 
   useEffect(() => {
     async function helper() {
       const { id } = (await params);
       const fetchedCourse = await CourseApi.getById(id);
-      console.log(fetchedCourse);
-      console.log(userId);
       setCourse(fetchedCourse);
     }
 
@@ -71,13 +71,27 @@ export default function Page({ params }: { params: Promise<{ id: string }>}) {
         <p>{course.description}</p>
         <button
           type="button"
-          onClick={() => OrderApi.create({
-            studentId: userId,
-            totalAmount: 10,
-            courseId: course.id,
-            courseFeeId: course.fees[0].id,
-            status: OrderStatus.pending,
-          })}
+          onClick={async () => {
+            await OrderApi.create(accessToken, {
+              totalAmount: course.fees[0].feeAmount,
+              courseId: course.id,
+              courseFeeId: course.fees[0].id,
+              status: OrderStatus.pending,
+            });
+
+            setCourseFees({});
+            const fetchedOrders = await OrderApi.getByUser(accessToken) || [];
+            await Promise.all(fetchedOrders.map(async (order) => {
+              const courseFee = await CourseFeeApi.getById(order.courseFeeId);
+              const fee = parseInt(courseFee.feeAmount, 10);
+              order.fee = fee;
+              setCourseFee(order.courseId, fee);
+            }));
+            setOrders([
+              // ...sampleOrders,
+              ...(fetchedOrders || []),
+            ]);
+          }}
         >
           Buy
         </button>

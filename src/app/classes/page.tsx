@@ -70,7 +70,7 @@ const sampleCourses: CourseInfoDto[] = [
   // },
 ];
 
-for (let i = 2; i <= 10; i += 1) {
+for (let i = 2; i <= 2; i += 1) {
   sampleCourses.push({
     ...sampleCourses[0],
     id: `${i}`,
