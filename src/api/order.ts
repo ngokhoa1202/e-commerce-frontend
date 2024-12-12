@@ -13,15 +13,26 @@ import { CreateOrderDto, OrderDto } from '@/dto/order';
 // };
 
 export default class OrderApi {
-  static async create(input: CreateOrderDto): Promise<OrderDto> {
-    const response = await fetch(`${BE_URL}/orders`, {
+  static async create(token: string, input: CreateOrderDto): Promise<OrderDto> {
+    if (typeof input.totalAmount === 'string') input.totalAmount = parseInt(input.totalAmount, 10);
+    const response = await fetch(`${BE_URL}/orders/create`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+      },
       body: JSON.stringify(input),
     });
     const { data } = await response.json();
-    console.log(response);
     return data;
+  }
+
+  static async remove(token: string, orderId: string): Promise<void> {
+    const response = await fetch(`${BE_URL}/orders/${orderId}`, {
+      method: 'DELETE',
+      headers: { Authorization: token },
+    });
+    // console.log(await response.json());
   }
 
   static async getByUser(token: string): Promise<OrderDto[]> {
@@ -30,7 +41,6 @@ export default class OrderApi {
       headers: { Authorization: token },
     });
     const { data } = await response.json();
-    console.log(data);
     return data;
   }
 }

@@ -24,7 +24,7 @@ export interface CourseInfoDto {
     id: string,
     courseId: string,
     description?: string,
-    feeAmount: number,
+    feeAmount: string | number,
     feeType: string,
   }[]
 }

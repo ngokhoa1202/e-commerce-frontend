@@ -6,14 +6,17 @@ import Image from 'next/image';
 import { orderStore } from '@/stores/cart';
 import { OrderDto } from '@/dto/order';
 import { StarIcon } from '@heroicons/react/24/solid';
+import { authStore } from '@/stores';
+import { useRouter } from 'next/navigation';
 
 export default function CartTotal() {
-  const { orders } = orderStore.getState();
   const [total, setTotal] = useState(0);
+  const { courseFees, orders } = orderStore.getState();
+  const { accessToken } = authStore.getState();
+  const router = useRouter();
 
   useEffect(() => {
-    const amount = orders.reduce((res, order) => res + (order.courseFee?.feeAmount || 0), 0);
-    setTotal(amount);
+    setTotal(Object.values(orders).reduce((res, { fee }) => res + (fee || 0), 0));
   }, [orders]);
 
   return (
@@ -23,7 +26,27 @@ export default function CartTotal() {
         $
         {total}
       </p>
-      <button type="button" className="bg-blue-600 text-white py-2 text-lg">Checkout</button>
+      <button
+        type="button"
+        className="bg-blue-600 text-white py-2 text-lg rounded"
+        onClick={async () => {
+          const orderId = orders[0].id;
+          const returnUrl = 'http://localhost:3031/checkout/success';
+          const cancelUrl = 'http://localhost:3031/checkout/cancel';
+          const response = await fetch('https://tienclay.me/ecommerce/payments/create', {
+            method: 'POST',
+            headers: {
+              Authorization: accessToken,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ orderId, returnUrl, cancelUrl }),
+          });
+          const { data } = await response.json();
+          if (data && data.checkoutUrl) router.push(data.checkoutUrl);
+        }}
+      >
+        Checkout
+      </button>
     </div>
   );
 }

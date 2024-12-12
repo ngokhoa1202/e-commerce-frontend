@@ -5,7 +5,7 @@ export interface CreateOrderDto {
   courseId: string
   courseFeeId: string
   status: OrderStatus
-  totalAmount: number
+  totalAmount: string | number
 }
 
 export interface OrderDto {
@@ -27,6 +27,7 @@ export interface OrderDto {
     id: string,
     feeAmount: number,
   }
+  fee?: number
   // payment?: Payment
   // createdAt: Date
   // updatedAt: Date

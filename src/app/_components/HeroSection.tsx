@@ -69,8 +69,9 @@ export default function HeroSection(
     props: {
       currentUserRole: UserRole
     }
-  },
+  } 
 ) {
+  
   const title: ReactElement = (props.currentUserRole === UserRole.Student)
     ? (
       <div>
@@ -105,6 +106,7 @@ export default function HeroSection(
       </div>
     );
 
+
   const potraits: Array<ReactElement> = (props.currentUserRole === UserRole.Student)
     ? (
       parentPortraits.map((portrait, idx) => (
@@ -135,7 +137,7 @@ export default function HeroSection(
       ))
     );
 
-  const customerFigure = (props.currentUserRole === UserRole.Parent)
+  const customerFigure = (props.currentUserRole === UserRole.Student)
     ? (
       <p className="text-center mt-2">
         <span className="text-blue-800 font-semibold text-xl">10 000</span>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
+import { ReactNode } from "react";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en">
