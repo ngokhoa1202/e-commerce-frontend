@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import CourseApi from '@/api/course';
-import { CourseInfoDto } from '@/dto/course';
+import { CourseFullDto, CourseInfoDto } from '@/dto/course';
 import ClassList from './_components/ClassList';
 
 const sampleCourses: CourseInfoDto[] = [
@@ -80,7 +80,7 @@ for (let i = 2; i <= 2; i += 1) {
 
 export default function Page() {
   const [isFetching, setIsFetching] = useState(true);
-  const [courses, setCourses] = useState<CourseInfoDto[]>(() => []);
+  const [courses, setCourses] = useState<CourseFullDto[]>(() => []);
   useEffect(() => {
     async function fetchData() {
       const fetchedCourses = await CourseApi.get();
@@ -89,6 +89,7 @@ export default function Page() {
     }
     fetchData();
   }, []);
+  
 
   return (
     <section className="container px-8">
@@ -97,7 +98,7 @@ export default function Page() {
         <div className="col-span-2">
           Filter
         </div>
-        <ClassList classes={[...sampleCourses, ...courses]} />
+        <ClassList classes={[...courses]} />
       </div>
     </section>
   );

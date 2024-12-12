@@ -23,13 +23,7 @@ export interface CourseInfoDto {
     lessons: { title: string, etc: string }[],
   }[]
 
-  fees: {
-    id: string,
-    courseId: string,
-    description?: string,
-    feeAmount: string | number,
-    feeType: string,
-  }[]
+  fees: Array<CourseFeePlainDto>;
 }
 
 export interface CoursePlainDto {
@@ -46,6 +40,10 @@ export interface CoursePlainDto {
   locationId: UUID;
 }
 
-export interface CourseWithCourseFeeDto extends CoursePlainDto {
+export interface CourseFullDto extends CoursePlainDto {
   fees: Array<CourseFeePlainDto>;
+}
+
+export interface Curriculum {
+  
 }
