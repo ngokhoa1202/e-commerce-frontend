@@ -3,7 +3,7 @@ import {
   HeartIcon,
   ChatBubbleOvalLeftIcon,
   ChartPieIcon,
-} from "@heroicons/react/24/outline";
+} from '@heroicons/react/24/outline';
 
 export default function Features() {
   return (

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-import Image from "next/image";
+import Image from 'next/image';
 // import { IonIcon } from "@ionic/react";
 // import { logoYoutube } from 'ionicons/icons';
 
@@ -12,24 +12,24 @@ type Backlink = {
 
 const backlinks: Array<Backlink> = [
   {
-    src: "/backlinks/facebook.svg",
-    alt: "Meta social media backlink",
-    href: "https://www.facebook.com/",
+    src: '/backlinks/facebook.svg',
+    alt: 'Meta social media backlink',
+    href: 'https://www.facebook.com/',
   },
   {
-    src: "/backlinks/youtube.svg",
-    alt: "Youtube social media backlink",
-    href: "https://www.youtube.com/",
+    src: '/backlinks/youtube.svg',
+    alt: 'Youtube social media backlink',
+    href: 'https://www.youtube.com/',
   },
   {
-    src: "/backlinks/linkedin.svg",
-    alt: "Linkedin social media backlink",
-    href: "https://www.linkedin.com/",
+    src: '/backlinks/linkedin.svg',
+    alt: 'Linkedin social media backlink',
+    href: 'https://www.linkedin.com/',
   },
   {
-    src: "/backlinks/tiktok.svg",
-    alt: "Tiktok social media backlink",
-    href: "https://www.tiktok.com/",
+    src: '/backlinks/tiktok.svg',
+    alt: 'Tiktok social media backlink',
+    href: 'https://www.tiktok.com/',
   },
 ];
 

@@ -1,3 +1,6 @@
+import { UUID } from "crypto"
+import { CourseFeePlainDto } from "./courseFee"
+
 export interface CreateCourseDto {
   name: string
   subject: string
@@ -27,4 +30,22 @@ export interface CourseInfoDto {
     feeAmount: string | number,
     feeType: string,
   }[]
+}
+
+export interface CoursePlainDto {
+  id: UUID;
+  createdAt: Date;
+  updatedAt: Date;
+  name: string;
+  subject: string;
+  duration: string;
+  startDate: Date;
+  endDate: Date;
+  description: string;
+  /* FIXME: should change */
+  locationId: UUID;
+}
+
+export interface CourseWithCourseFeeDto extends CoursePlainDto {
+  fees: Array<CourseFeePlainDto>;
 }

@@ -1,37 +1,37 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
-import { NextFontWithVariable } from "next/dist/compiled/@next/font";
-import { ReactNode } from "react";
-import Header from "./_components/Header";
-import Footer from "./_components/Footer";
+import type { Metadata } from 'next';
+import localFont from 'next/font/local';
+import './globals.css';
+import { NextFontWithVariable } from 'next/dist/compiled/@next/font';
+import { ReactNode } from 'react';
+import Header from './_components/Header';
+import Footer from './_components/Footer';
 
 const petitFormalScript: NextFontWithVariable = localFont({
-  src: "./fonts/PetitFormalScript-Regular.ttf",
-  variable: "--font-petit-formal",
-  weight: "100 900",
+  src: './fonts/PetitFormalScript-Regular.ttf',
+  variable: '--font-petit-formal',
+  weight: '100 900',
 });
 
 const lato: NextFontWithVariable = localFont({
-  src: "./fonts/Lato-Regular.ttf",
-  variable: "--font-lato",
-  weight: "100 900",
+  src: './fonts/Lato-Regular.ttf',
+  variable: '--font-lato',
+  weight: '100 900',
 });
 
 const karla: NextFontWithVariable = localFont({
-  src: "./fonts/Karla-VariableFont_wght.ttf",
-  variable: "--font-karla",
-  weight: "100 900",
+  src: './fonts/Karla-VariableFont_wght.ttf',
+  variable: '--font-karla',
+  weight: '100 900',
 });
 const sedan: NextFontWithVariable = localFont({
-  src: "./fonts/Sedan-Regular.ttf",
-  variable: "--font-sedan",
-  weight: "100 900",
+  src: './fonts/Sedan-Regular.ttf',
+  variable: '--font-sedan',
+  weight: '100 900',
 });
 
 export const metadata: Metadata = {
-  title: "ZetStudy",
-  description: "Invest in your future",
+  title: 'ZetStudy',
+  description: 'Invest in your future',
 };
 
 export default function RootLayout({

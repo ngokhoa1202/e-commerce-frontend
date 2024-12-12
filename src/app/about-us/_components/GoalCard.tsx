@@ -1,4 +1,4 @@
-import { Achievement } from "@/constants";
+import { Achievement } from '@/constants';
 
 export default function GoalCard({ title, description, icon }: Achievement) {
   return (
