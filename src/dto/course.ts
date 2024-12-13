@@ -1,5 +1,6 @@
-import { UUID } from "crypto"
-import { CourseFeePlainDto } from "./courseFee"
+/* eslint-disable import/no-cycle */
+import { UUID } from 'crypto';
+import { CourseFeePlainDto } from './courseFee'
 
 export interface CreateCourseDto {
   name: string
@@ -36,14 +37,10 @@ export interface CoursePlainDto {
   startDate: Date;
   endDate: Date;
   description: string;
-  /* FIXME: should change */
-  locationId: UUID;
+  
 }
 
 export interface CourseFullDto extends CoursePlainDto {
   fees: Array<CourseFeePlainDto>;
 }
 
-export interface Curriculum {
-  
-}
