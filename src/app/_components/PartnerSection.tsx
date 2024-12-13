@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 type PartnerLogo = {
   src: string;
@@ -8,23 +8,23 @@ type PartnerLogo = {
 
 const partnerLogos: Array<PartnerLogo> = [
   {
-    src: "/partners/duolingo.webp",
-    alt: "Duolingo brand logo",
+    src: '/partners/duolingo.webp',
+    alt: 'Duolingo brand logo',
     width: 80,
   },
   {
-    src: "/partners/elsa.png",
-    alt: "Elsa speaking app brand logo",
+    src: '/partners/elsa.png',
+    alt: 'Elsa speaking app brand logo',
     width: 200
   },
   {
-    src: "/partners/british-council.png",
-    alt: "British council brand logo",
+    src: '/partners/british-council.png',
+    alt: 'British council brand logo',
     width: 270
   },
   {
-    src: "/partners/promova.png",
-    alt: "Promova brand logo",
+    src: '/partners/promova.png',
+    alt: 'Promova brand logo',
     width: 120
   }
 ]

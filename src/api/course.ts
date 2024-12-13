@@ -1,4 +1,4 @@
-import { CourseInfoDto } from '@/dto/course';
+import { CourseFullDto, CourseInfoDto } from '@/dto/course';
 import { BE_URL } from '@/constants';
 
 const sampleCourse = {
@@ -39,27 +39,20 @@ const sampleCourse = {
 };
 
 export default class CourseApi {
-  static format(course: CourseInfoDto): CourseInfoDto {
-    return {
-      ...course,
-      // ...JSON.parse(course.description),
-      curriculum: [...sampleCourse.curriculum],
-    };
-  }
 
-  static async get(): Promise<CourseInfoDto[]> {
+  static async get(): Promise<CourseFullDto[]> {
     const response = await fetch(`${BE_URL}/courses`, {
       method: 'GET',
     });
     const { data } = await response.json();
-    return data.map((course: CourseInfoDto) => CourseApi.format(course));
+    return data;
   }
 
-  static async getById(courseId: string): Promise<CourseInfoDto> {
+  static async getById(courseId: string): Promise<CourseFullDto> {
     const response = await fetch(`${BE_URL}/courses/${courseId}`, {
       method: 'GET',
     });
     const { data } = await response.json();
-    return data.id ? CourseApi.format(data) : sampleCourse;
+    return data;
   }
 }

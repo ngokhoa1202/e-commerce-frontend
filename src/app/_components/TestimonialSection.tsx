@@ -124,7 +124,8 @@ export default function TestimonialSection(): JSX.Element {
                 alt={image.alt}
                 width={200}
                 height={200}
-                className="object-cover w-full h-52 rounded-xl hover:scale-x-110 hover:scale-y-110 duration-500 hover:shadow-blue-800 hover:shadow-lg hover:-translate-y-4"
+                className="object-cover w-full h-52 rounded-xl hover:scale-x-110 hover:scale-y-110 duration-500 hover:shadow-blue-800 
+                  hover:shadow-lg hover:-translate-y-4"
               />
             </figure>
           ))

@@ -1,4 +1,4 @@
-import { UserRole } from "@/constants";
+import { UserRole } from '@/constants';
 
 const BE_URL = process.env.NEXT_PUBLIC_BE_URL;
 
