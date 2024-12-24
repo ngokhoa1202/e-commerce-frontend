@@ -20,3 +20,6 @@ export type Achievement = {
   description: string;
   icon: string;
 }
+
+/* FETCHING TIMEOUT in ms */
+export const TIMEOUT: number = 3000;  

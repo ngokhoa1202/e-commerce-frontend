@@ -55,4 +55,15 @@ export default class CourseApi {
     const { data } = await response.json();
     return data;
   }
+
+  static async getByAccessToken(accessToken: string): Promise<CourseFullDto[]> {
+    const response = await fetch(`${BE_URL}/users/courses`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    });
+    const {data} = await response.json();
+    return data;
+  }
 }
