@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { CourseFullDto, CourseInfoDto } from '@/dto/course';
 import CourseApi from '@/api/course';
-import CurriculumCard from '@/app/classes/_components/CurriculumCard';
+import CurriculumCard from '@/app/_components/classes/CurriculumCard';
 import OrderApi from '@/api/order';
 import { authStore, orderStore } from '@/stores';
 import { OrderStatus } from '@/constants';
@@ -155,6 +155,7 @@ export default function Page({ params }: { params: Promise<{ id: string }>}) {
     }
 
     fetchCourse();
+    fetchCurriculum();
   }, [params]);
 
   return (

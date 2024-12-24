@@ -21,7 +21,10 @@ export default function LoginPage() {
     router.back();
   }
   return (
-    <section className="mx-auto mt-20">
+    <section className="mx-auto mt-20 bg-[url('https://wp-demco-s3-bucket.s3.amazonaws.com/ideas/2019/08/2750-Demco-Green-Bay-6-13-19.jpg')]
+      py-24"
+      
+    >
       {/* <h2>{accessToken}</h2> */}
 
       <form className="max-w-xl mx-auto px-16 py-10 border border-blue-400 rounded-2xl shadow-md shadow-blue-600 bg-white" onSubmit={login}>
