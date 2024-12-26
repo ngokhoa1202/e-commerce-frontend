@@ -60,7 +60,7 @@ export default class CourseApi {
     const response = await fetch(`${BE_URL}/users/courses`, {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${accessToken}`
+        Authorization: `${accessToken}`
       }
     });
     const {data} = await response.json();

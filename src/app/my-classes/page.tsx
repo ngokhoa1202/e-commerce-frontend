@@ -6,10 +6,10 @@ import { useRouter } from 'next/navigation';
 
 import CourseApi from '@/api/course';
 
-import ClassList from '../_components/classes/ClassList';
 import { CourseFullDto } from '@/dto/course';
 import { TIMEOUT } from '@/constants';
 import { HashLoader } from 'react-spinners';
+import MyClassList from '../_components/classes/MyClassList';
 
 export default function MyClasses(): ReactElement {
   
@@ -59,7 +59,7 @@ export default function MyClasses(): ReactElement {
             <div className="col-span-2">
               Filter
             </div>
-            <ClassList classes={[...myCourses]} />
+            <MyClassList courses={[...myCourses]} />
           </div>
         )
       }
