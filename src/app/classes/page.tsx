@@ -9,6 +9,7 @@ import ClassList from '../_components/classes/ClassList';
 export default function ClassesPage() {
   const [isFetching, setIsFetching] = useState(true);
   const [courses, setCourses] = useState<CourseFullDto[]>(() => []);
+
   useEffect(() => {
     async function fetchData() {
       const fetchedCourses = await CourseApi.get();
@@ -17,7 +18,6 @@ export default function ClassesPage() {
     }
     fetchData();
   }, []);
-  
 
   return (
     <section className="container px-8">
@@ -26,7 +26,7 @@ export default function ClassesPage() {
         <div className="col-span-2">
           Filter
         </div>
-        <ClassList classes={[...courses]} />
+        <ClassList courses={courses} />
       </div>
     </section>
   );
