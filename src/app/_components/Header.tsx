@@ -5,7 +5,6 @@ import { ArrowRightEndOnRectangleIcon, ArrowRightStartOnRectangleIcon, ShoppingC
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -15,14 +14,8 @@ const navigation = [
 ];
 
 export default function Header() {
-  const { accessToken, setAccessToken } = authStore.getState();
-
-  const [isAuthed, setIsAuthed] = useState(false);
+  const { isAuthed, setAccessToken } = authStore.getState();
   const router = useRouter();
-
-  useEffect(() => {
-    setIsAuthed(!!accessToken);
-  }, [accessToken]);
 
   function login() {
     router.push('/login');
@@ -85,8 +78,7 @@ export default function Header() {
                     <span className="inline-block mr-3">Logout</span>
                     <ArrowRightStartOnRectangleIcon width={24} height={24} className="inline-block" />
                   </div>
-                )
-                : (
+                ) : (
                   <div>
                     <span className="inline-block mr-3">Login</span>
                     <ArrowRightEndOnRectangleIcon width={24} height={24} className="inline-block" />

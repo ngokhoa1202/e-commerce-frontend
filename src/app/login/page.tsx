@@ -18,7 +18,8 @@ export default function LoginPage() {
     const { accessToken, refreshToken } = await AuthApi.login({ email, password });
     setAccessToken(accessToken);
     setRefreshToken(refreshToken);
-    router.back();
+    router.refresh();
+    setTimeout(() => router.back(), 200);
   }
   return (
     <section className="mx-auto mt-20 bg-[url('https://wp-demco-s3-bucket.s3.amazonaws.com/ideas/2019/08/2750-Demco-Green-Bay-6-13-19.jpg')]
