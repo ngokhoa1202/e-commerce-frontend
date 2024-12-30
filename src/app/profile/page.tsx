@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import ProfileApi from '@/api/profile';
+import ProfileApi from '@/api/tutor';
 import { ProfileDto } from '@/dto/profile';
 import UserApi from '@/api/user';
 import { initialState } from '../../stores/auth';
