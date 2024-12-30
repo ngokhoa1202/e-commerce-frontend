@@ -3,7 +3,6 @@
 'use client';
 
 import React, { SyntheticEvent } from 'react';
-import Link from 'next/link';
 import { CourseFullDto, CourseInfoDto } from '@/dto/course';
 import { StarIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
