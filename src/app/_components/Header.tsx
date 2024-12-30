@@ -1,45 +1,23 @@
-'use client';
+"use client";
 
-import { authStore } from '@/stores/auth';
-import { ArrowRightEndOnRectangleIcon, ArrowRightStartOnRectangleIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import Image from "next/image";
+import Link from "next/link";
 
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Classes', href: '/classes' },
   { name: 'Pricing', href: '/pricing' },
-  { name: 'About us', href: '/about-us' },
-];
+  { name: 'About us', href: '/about' },
+]
 
-export default function Header() {
-  const { accessToken, setAccessToken } = authStore.getState();
-
-  const [isAuthed, setIsAuthed] = useState(false);
-  const router = useRouter();
-
-  useEffect(() => {
-    setIsAuthed(!!accessToken);
-  }, [accessToken]);
-
-  function login() {
-    router.push('/login');
-  }
-
-  function logout() {
-    setAccessToken('');
-    router.refresh();
-  }
-
+export default function Header(): JSX.Element {
   return (
     <header>
       <nav aria-label="Global" className="flex items-center justify-between px-6 lg:px-8">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-5">
-            <span className="sr-only" />
-            <Image
+            <span className="sr-only"></span>
+            <Image 
               alt="ZetStudy brand logo"
               src="/Logo.png"
               className="h-12 w-auto rounded justify-self-center hover:shadow-small"
@@ -53,9 +31,7 @@ export default function Header() {
 
         <div className="lg:flex lg:gap-x-12">
           {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
+            <Link key={item.name} href={item.href} 
               className="text-lg font-semibold text-gray-700 px-5 py-2 rounded-md
               hover:bg-blue-600 hover:text-gray-200 active:bg-blue-700 active:text-gray-100
               hover:active:shadow-lg focus:drop-shadow-lg focus:outline-blue-700 focus:outline-offset-4"
@@ -65,38 +41,17 @@ export default function Header() {
           ))}
         </div>
 
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-2">
-          <Link
-            href="/cart"
-            className="px-3 py-2 text-black hover:shadow-lg hover:bg-blue-600 hover:text-white rounded-lg"
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <a href="/login" 
+            className="text-lg font-semibold px-8 py-2 rounded-lg
+            bg-blue-600 text-gray-200 hover:text-gray-100
+            hover:shadow-lg hover:bg-blue-800 active:bg-blue-800 focus:drop-shadow-lg focus:outline-blue-700 focus:outline-offset-4"
           >
-            <ShoppingCartIcon width={24} height={24} className="inline-block" />
-          </Link>
-
-          <button
-            type="button"
-            onClick={() => (isAuthed ? logout() : login())}
-            className="block text-lg font-semibold px-5 py-2 rounded-lg bg-blue-600 text-white hover:shadow-lg hover:bg-blue-800"
-          >
-            {
-              isAuthed
-                ? (
-                  <div>
-                    <span className="inline-block mr-3">Logout</span>
-                    <ArrowRightStartOnRectangleIcon width={24} height={24} className="inline-block" />
-                  </div>
-                )
-                : (
-                  <div>
-                    <span className="inline-block mr-3">Login</span>
-                    <ArrowRightEndOnRectangleIcon width={24} height={24} className="inline-block" />
-                  </div>
-                )
-            }
-          </button>
+            Login
+          </a>
         </div>
       </nav>
 
     </header>
-  );
+  )
 }
