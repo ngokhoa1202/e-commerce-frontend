@@ -1,5 +1,6 @@
 import { BE_URL } from '@/constants';
 import { CreateOrderDto, OrderDto } from '@/dto/order';
+// const BE_URL = 'https://tienclay.me/ecommerce'
 
 // const sampleCourse = {
 //   id: '1',

@@ -31,4 +31,13 @@ export default class AuthApi {
     const { data } = await response.json();
     return data;
   }
+
+  static async getCurUser(token: string) {
+    const response = await fetch(`${BE_URL}/auth/me`, {
+      method: 'GET',
+      headers: { Authorization: token },
+  });
+    const { data } = await response.json();
+    return data;
+  }
 }
