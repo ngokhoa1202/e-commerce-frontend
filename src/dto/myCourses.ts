@@ -1,3 +1,10 @@
+interface TutorDto {
+  username: string;
+  email: string;
+  role: string; 
+  status: string; 
+}
+
 export interface CourseDto {
     id: string;
     name: string;
@@ -12,10 +19,5 @@ export interface CourseDto {
     fees: string[]; 
   }
   
-  export interface TutorDto {
-    username: string;
-    email: string;
-    role: string; 
-    status: string; 
-  }
-  
+
+

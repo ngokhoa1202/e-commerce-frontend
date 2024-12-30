@@ -2,16 +2,17 @@ import React, { SyntheticEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 
-import { CourseDto } from "@/dto/myCourses";
+import { CourseDto } from '@/dto/myCourses';
 
 
 export default function CourseList({ courses } : {courses: CourseDto[]}) {
 
   const router: AppRouterInstance = useRouter();
 
-  function onClickClassCard(e: SyntheticEvent<HTMLDivElement>, courseId: string) {
+  function onClickCourse(courseId: string) {
     router.push(`classes/${courseId}`);
   }
+  
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-semibold mb-4 text-blue-600">My Courses</h2>
@@ -20,7 +21,7 @@ export default function CourseList({ courses } : {courses: CourseDto[]}) {
           <div
             key={course.id}
             className="bg-white shadow-sm rounded-lg p-6 border border-gray-200 hover:shadow-md transition-shadow duration-200"
-            onClick={(e) => onClickClassCard(e, course.id)}
+            onClick={(e) => onClickCourse(course.id)}
             role="button"
             tabIndex={0}
           >
@@ -32,11 +33,11 @@ export default function CourseList({ courses } : {courses: CourseDto[]}) {
                 <strong className="font-semibold">Duration:</strong> {course.duration}
               </div>
               <div>
-                <strong className="font-semibold">Start Date:</strong>{" "}
+                <strong className="font-semibold">Start Date:</strong>{' '}
                 {new Date(course.startDate).toLocaleDateString()}
               </div>
               <div>
-                <strong className="font-semibold">End Date:</strong>{" "}
+                <strong className="font-semibold">End Date:</strong>{' '}
                 {new Date(course.endDate).toLocaleDateString()}
               </div>
               <div>
