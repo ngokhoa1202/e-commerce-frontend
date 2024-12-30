@@ -1,3 +1,4 @@
+import { UUID } from 'crypto';
 
 export default interface LocationCreationDto {
   addressLine1: string;
@@ -6,5 +7,11 @@ export default interface LocationCreationDto {
   state: string;
   zipCode: string;
   country: string;
+}
+
+export interface LocationPlainDto extends LocationCreationDto {
+  id: UUID;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
