@@ -1,20 +1,18 @@
-'use client';
-
-import { useEffect, useState, CSSProperties } from 'react';
-import { CourseFullDto } from '@/dto/course';
-import CourseApi from '@/api/course';
-import CurriculumCard from '@/app/_components/classes/CurriculumCard';
-import OrderApi from '@/api/order';
-import { authStore, orderStore } from '@/stores';
-import { OrderStatus, SAMPLE_COURSE_FULL_DTO, SAMPLE_CURRICULUM, TIMEOUT } from '@/constants';
-import CourseFeeApi from '@/api/courseFee';
-import { WeeklyPlan } from '@/dto/weeklyPlan';
-import CurriculumApi from '@/api/curriculum';
+import { ReactElement, CSSProperties, useState, useEffect} from 'react';
 import { HashLoader } from 'react-spinners';
+import { authStore } from '@/stores';
 
+import { TIMEOUT, SAMPLE_COURSE_FULL_DTO, SAMPLE_CURRICULUM} from '@/constants';
+import { CourseFullDto } from '@/dto/course';
+import { WeeklyPlan } from '@/dto/weeklyPlan';
+import CurriculumCard from '@/app/_components/classes/CurriculumCard';
+import CourseApi from '@/api/course';
+import CurriculumApi from '@/api/curriculum';
 
-export default function ClassDetailPage({ params }: { params: Promise<{ id: string }>}) {
-  
+export default function MyClassDetailPage(
+  {params} : {params: Promise<{id: string}>}
+): ReactElement {
+ 
   const [isFetching, setIsFetching] = useState(false);
 
   const [course, setCourse] = useState<CourseFullDto>(() => SAMPLE_COURSE_FULL_DTO);
