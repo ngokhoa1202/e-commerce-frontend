@@ -1,6 +1,8 @@
-import Image from "next/image";
-import { IonIcon } from "@ionic/react";
-import { logoYoutube } from 'ionicons/icons';
+/* eslint-disable jsx-a11y/anchor-is-valid */
+
+import Image from 'next/image';
+// import { IonIcon } from "@ionic/react";
+// import { logoYoutube } from 'ionicons/icons';
 
 type Backlink = {
   src: string;
@@ -8,37 +10,35 @@ type Backlink = {
   href: string;
 }
 
-
 const backlinks: Array<Backlink> = [
   {
-    src: "/backlinks/facebook.svg",
-    alt: "Meta social media backlink",
-    href: "https://www.facebook.com/"
+    src: '/backlinks/facebook.svg',
+    alt: 'Meta social media backlink',
+    href: 'https://www.facebook.com/',
   },
   {
-    src: "/backlinks/youtube.svg",
-    alt: "Youtube social media backlink",
-    href: "https://www.youtube.com/"
+    src: '/backlinks/youtube.svg',
+    alt: 'Youtube social media backlink',
+    href: 'https://www.youtube.com/',
   },
   {
-    src: "/backlinks/linkedin.svg",
-    alt: "Linkedin social media backlink",
-    href: "https://www.linkedin.com/"
+    src: '/backlinks/linkedin.svg',
+    alt: 'Linkedin social media backlink',
+    href: 'https://www.linkedin.com/',
   },
-   {
-    src: "/backlinks/tiktok.svg",
-    alt: "Tiktok social media backlink",
-    href: "https://www.tiktok.com/"
-  }
-]
+  {
+    src: '/backlinks/tiktok.svg',
+    alt: 'Tiktok social media backlink',
+    href: 'https://www.tiktok.com/',
+  },
+];
 
-export default function Footer(): JSX.Element {
-
+export default function Footer() {
   return (
     <footer className="grid grid-cols-5 gap-x-16 w-full mx-auto mt-40 mb-12 bg-blue-50 px-8 py-8">
       <div className="flex flex-col gap-8 w-11/12">
         <a href="#" className="flex flex-col items-center">
-          <Image 
+          <Image
             src="/Logo.png"
             alt="Our company brand logo"
             width={48}
@@ -49,26 +49,22 @@ export default function Footer(): JSX.Element {
 
         <ul className="flex flex-row justify-around">
           {
-            backlinks.map((backlink, idx) => {
-              return (
-              
-                <li key={idx} className="h-6">
-                  <a href={backlink.href} className="block hover:-translate-y-1 duration-200" >
-                    <Image 
-                      src={backlink.src}
-                      alt={backlink.alt}
-                      loading="lazy"
-                      width={24}
-                      color="blue"
-                      height={24}
-                      className="block w-8 h-8 focus:outline-1 focus:outline-offset-4 focus:outline-blue-400"
-                    />
-                  </a>
-                </li>
-              )
-            })
+            backlinks.map((backlink, idx) => (
+              <li key={idx} className="h-6">
+                <a href={backlink.href} className="block hover:-translate-y-1 duration-200">
+                  <Image
+                    src={backlink.src}
+                    alt={backlink.alt}
+                    loading="lazy"
+                    width={24}
+                    color="blue"
+                    height={24}
+                    className="block w-8 h-8 focus:outline-1 focus:outline-offset-4 focus:outline-blue-400"
+                  />
+                </a>
+              </li>
+            ))
           }
-         
         </ul>
 
         <p className="text-sm text-center">&copy; ZetStudy 2024. All rights reserved.</p>
@@ -77,7 +73,8 @@ export default function Footer(): JSX.Element {
       <div className="flex flex-col gap-8">
         <h3 className="text-xl font-semibold">Contact us</h3>
         <p className="text-wrap font-normal">
-          <span className="font-medium">Address:&nbsp;</span> 240 Nguyen Chi Thanh, District 5, Ho Chi Minh City, Vietnam
+          <span className="font-medium">Address:&nbsp;</span>
+          240 Nguyen Chi Thanh, District 5, Ho Chi Minh City, Vietnam
         </p>
         <p className="text-wrap font-normal">
           <span className="font-medium">Email:&nbsp;</span>
@@ -156,7 +153,7 @@ export default function Footer(): JSX.Element {
           </li>
         </ul>
       </div>
-      
+
       <div className="flex flex-col gap-8">
         <h3 className="text-xl font-semibold">Customer service</h3>
         <ul className="flex flex-col gap-5">
@@ -180,5 +177,5 @@ export default function Footer(): JSX.Element {
         </ul>
       </div>
     </footer>
-  )
+  );
 }

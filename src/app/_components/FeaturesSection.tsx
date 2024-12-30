@@ -1,12 +1,11 @@
-import { 
+import {
   AcademicCapIcon,
   HeartIcon,
   ChatBubbleOvalLeftIcon,
-  ChartPieIcon
-} from "@heroicons/react/24/outline";
+  ChartPieIcon,
+} from '@heroicons/react/24/outline';
 
-
-export default function Features(): JSX.Element {
+export default function Features() {
   return (
     <section className="mt-40 w-4/5 mx-auto border-t-gray-300">
       <ul className="flex flex-row w-full gap-8">
@@ -48,8 +47,7 @@ export default function Features(): JSX.Element {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. At, esse. Obcaecati beatae maiores officia in minus quo
             </p>
           </div>
-        </li>   
-        
+        </li>
       </ul>
     </section>
   );
