@@ -44,11 +44,11 @@ export default function CourseList({ courses }: { courses: CourseDto[] }) {
                 </div>
                 <div>
                   <strong className="font-semibold">Start Date:</strong>{' '}
-                  {new Date(course.startDate).toLocaleDateString()}
+                  {new Date(course.startDate).toISOString().split('T')[0]}
                 </div>
                 <div>
                   <strong className="font-semibold">End Date:</strong>{' '}
-                  {new Date(course.endDate).toLocaleDateString()}
+                  {new Date(course.endDate).toISOString().split('T')[0]}
                 </div>
                 <div>
                   <strong className="font-semibold">Tutor:</strong> {course.tutors[0].username}

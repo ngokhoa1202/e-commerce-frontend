@@ -6,7 +6,7 @@ import ProfileApi from '@/api/profile';
 import React, { useState } from "react";
 import { authStore } from '@/stores/auth';
 
-export default function ProfileInfo({ profile, profileId, username }: { profile: ProfileDto; profileId: string; username: string}) {
+export default function ProfileInfo({ profile, profileId, username }: { profile: ProfileDto; profileId: string; username: string }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedProfile, setEditedProfile] = useState({ ...profile });
   const defaultAvatar = "/tutors/defaultAvatar.jpg";
@@ -20,7 +20,7 @@ export default function ProfileInfo({ profile, profileId, username }: { profile:
   const handleSave = async () => {
     try {
       const { id, ...profileWithoutId } = editedProfile;
-      const response = await ProfileApi.editByProfileId(profileId, profileWithoutId, authStore.getState().accessToken)
+      const response = await ProfileApi.editByProfileId(profileId, profileWithoutId, authStore.getState().accessToken);
 
       if (response.ok) {
         setIsEditing(false);
@@ -30,6 +30,20 @@ export default function ProfileInfo({ profile, profileId, username }: { profile:
       }
     } catch (error) {
       console.error("Error updating profile:", error);
+    }
+  };
+
+  const formatDate = (date: string | undefined) => {
+    if (!date) return "Not provided";
+    try {
+      const parsedDate = new Date(date);
+      if (isNaN(parsedDate.getTime())) return "Not provided";
+      const year = parsedDate.getFullYear();
+      const month = String(parsedDate.getMonth() + 1).padStart(2, '0');
+      const day = String(parsedDate.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    } catch {
+      return "Invalid date";
     }
   };
 
@@ -74,22 +88,30 @@ export default function ProfileInfo({ profile, profileId, username }: { profile:
         </p>
       </div>
       <div className="space-y-6">
-        {/* Dynamic fields */}
-        {[
-          { label: "Degree", field: "degree", value: editedProfile.degree || ''},
-          { label: "Experience", field: "experienceYears", value: `${editedProfile.experienceYears || 0} years`},
-          { label: "Address", field: "address", value: editedProfile.address || ''},
-          { label: "Date of Birth", field: "birthOfDate", value: new Date(editedProfile.birthOfDate).toLocaleDateString()},
-          { label: "Phone", field: "phoneNumber", value: `${editedProfile.phoneCode || ''} ${editedProfile.phoneNumber || ''}`},
+        {[ 
+          { label: "Degree", field: "degree", value: editedProfile.degree || '' },
+          { label: "Experience", field: "experienceYears", value: `${editedProfile.experienceYears || 0} years` },
+          { label: "Address", field: "address", value: editedProfile.address || '' },
+          { label: "Date of Birth", field: "birthOfDate", value: formatDate(editedProfile.birthOfDate) },
+          { label: "Phone", field: "phoneNumber", value: `${editedProfile.phoneCode || ''} ${editedProfile.phoneNumber || ''}` },
         ].map(({ label, field, value }) => (
           <div className="flex items-center border-t pt-4" key={field}>
             <span className="text-gray-700 font-semibold mr-4">{label}:</span>
             {isEditing ? (
-              <input
-                className="border p-2 rounded w-full"
-                value={editedProfile[field as keyof ProfileDto] as string}
-                onChange={(e) => handleInputChange(field, e.target.value)}
-              />
+              field === "birthOfDate" ? (
+                <input
+                  type="date"
+                  className="border p-2 rounded w-full"
+                  value={editedProfile.birthOfDate || ''}
+                  onChange={(e) => handleInputChange(field, e.target.value)}
+                />
+              ) : (
+                <input
+                  className="border p-2 rounded w-full"
+                  value={editedProfile[field as keyof ProfileDto] as string}
+                  onChange={(e) => handleInputChange(field, e.target.value)}
+                />
+              )
             ) : (
               <span className="text-gray-700">{value}</span>
             )}
