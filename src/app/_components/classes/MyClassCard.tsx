@@ -2,9 +2,9 @@
 
 'use client';
 
-import React, { SyntheticEvent } from 'react';
+import React, { ReactElement, SyntheticEvent } from 'react';
 import Link from 'next/link';
-import { CourseFullDto, CourseInfoDto } from '@/dto/course';
+import { CoursePlainDto } from '@/dto/course';
 import { StarIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 
@@ -17,12 +17,10 @@ interface ClassImage {
   alt: string;
 }
 
-export default function ClassCard({ course }: { course: CourseFullDto }) {
+export default function MyClassCard({ course }: { course: CoursePlainDto }): ReactElement {
   const {
-    id, name, description, subject, duration, fees, startDate, endDate
+    id, name, description, subject, duration, startDate, endDate
   } = course;
-
-  const fee = fees.length ? fees[0].feeAmount : 0;
 
   const classImage: ClassImage = {
     src: '/classes/class-1.webp',
@@ -32,7 +30,7 @@ export default function ClassCard({ course }: { course: CourseFullDto }) {
   const router: AppRouterInstance = useRouter();
 
   function onClickClassCard(e: SyntheticEvent<HTMLDivElement>, courseId: UUID) {
-    router.push(`classes/${id}`);
+    router.push(`my-classes/${id}`);
   }
 
   return (
@@ -96,10 +94,6 @@ export default function ClassCard({ course }: { course: CourseFullDto }) {
 
         <div className="flex justify-between items-center gap-8 mt-8 mb-8 ">
           <div className="flex space-x-4">
-            <div className="px-4 py-2 bg-zinc-500 text-gray-100 text-normal rounded-md flex items-center">
-              $
-              {fee}
-            </div>
 
             <div className="px-4 py-2 bg-blue-600 text-gray-100 text-normal font-bold rounded-md flex items-center gap-2">
               <StarIcon
@@ -111,7 +105,7 @@ export default function ClassCard({ course }: { course: CourseFullDto }) {
             </div>
 
             <div className="px-4 py-2 bg-zinc-500 text-gray-100 text-normal rounded-md flex items-center gap-2">
-              20 slots
+              20 students
             </div>
           </div>
         </div>
