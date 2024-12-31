@@ -1,4 +1,4 @@
-import { CourseFullDto, CourseInfoDto, CoursePlainDto } from '@/dto/course';
+import { CourseFullDto } from '@/dto/course';
 import ClassCard from './ClassCard';
 
 

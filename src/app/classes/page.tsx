@@ -20,14 +20,17 @@ export default function ClassesPage() {
   }, []);
 
   return (
-    <section className="container px-8">
-      <h1 className="font-bold text-4xl text-center mt-12">Our classes</h1>
-      <div className="container grid grid-cols-12 gap-x-0 mt-10">
-        <div className="col-span-2">
-          Filter
+    <main>
+      <section className="container px-8">
+        <h1 className="font-bold text-4xl text-center mt-12">Our classes</h1>
+        <div className="container grid grid-cols-12 gap-x-0 mt-10">
+          <div className="col-span-2">
+            Filter
+          </div>
+          <ClassList courses={[...courses]} />
         </div>
-        <ClassList courses={courses} />
-      </div>
-    </section>
+      </section>
+    </main>
+   
   );
 }

@@ -4,7 +4,7 @@
 
 import React, { SyntheticEvent } from 'react';
 import Link from 'next/link';
-import { CourseFullDto, CourseInfoDto } from '@/dto/course';
+import { CourseFullDto } from '@/dto/course';
 import { StarIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 
@@ -84,7 +84,7 @@ export default function ClassCard({ course }: { course: CourseFullDto }) {
               Start:&nbsp;
               {(startDate) ? startDate.toString() : Date.now().toString()}
             </div>
-            
+
           </div>
 
           {/* Right Chip */}
