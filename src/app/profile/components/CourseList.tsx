@@ -8,9 +8,9 @@ import { CourseDto } from '@/dto/myCourses';
 export default function CourseList({ courses }: { courses: CourseDto[] }) {
   const router: AppRouterInstance = useRouter();
 
-  // function onClickCourse(courseId: string) {
-  //   router.push(`classes/${courseId}`);
-  // }
+  function onClickCourse(courseId: string) {
+    router.push(`classes/${courseId}`);
+  }
 
 
   return (
@@ -31,7 +31,7 @@ export default function CourseList({ courses }: { courses: CourseDto[] }) {
             <div
               key={course.id}
               className="bg-white shadow-sm rounded-lg p-6 border border-gray-200 hover:shadow-md transition-shadow duration-200"
-              // onClick={(e) => onClickCourse(course.id)}
+              onClick={(e) => onClickCourse(course.id)}
               role="button"
               tabIndex={0}
             >
