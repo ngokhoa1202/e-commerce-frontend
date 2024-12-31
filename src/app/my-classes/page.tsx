@@ -17,8 +17,6 @@ import ErrorModal from '../_components/ErrorModal';
 
 export default function MyClassesPage(): ReactElement {
 
-  const [open, setOpen] = useState(true);
-
   const { accessToken } = authStore.getState();
   const router = useRouter();
 

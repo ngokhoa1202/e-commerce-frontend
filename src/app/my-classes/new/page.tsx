@@ -13,6 +13,7 @@ import { authStore } from '@/stores';
 import LocationApi from '@/api/location';
 import CourseApi from '@/api/course';
 import { HashLoader } from 'react-spinners';
+import { UUID } from 'crypto';
 
 const INITIAL_COURSE: CourseCreationDto = {
   name: '',
@@ -82,7 +83,7 @@ export default function CreateNewClassPage(): ReactElement {
     setLocation(locations[index]);
     setCourse({
       ...course,
-      locationId: locations[index].id
+      locationId: (e.currentTarget.value as UUID)
     });
   }
 

@@ -11,6 +11,7 @@ import CourseFeeApi from '@/api/courseFee';
 import { WeeklyPlan } from '@/dto/weeklyPlan';
 import CurriculumApi from '@/api/curriculum';
 import { HashLoader } from 'react-spinners';
+import Link from 'next/link';
 
 
 export default function ClassDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -46,6 +47,7 @@ export default function ClassDetailPage({ params }: { params: Promise<{ id: stri
     fetchCourse();
     fetchCurriculum();
   }, [params]);
+  
 
   return (
     <main className="container mx-auto px-16 py-8 flex flex-col gap-8">
@@ -65,6 +67,16 @@ export default function ClassDetailPage({ params }: { params: Promise<{ id: stri
               <div className="col-span-9">
                 <h1 className="text-4xl font-bold col-span-4">{course.name}</h1>
                 <h2 className="text-2xl font-semibold col-span-6 mt-4">{course.description}</h2>
+              </div>
+
+              <div className="col-span-3">
+                <Link 
+                  href="/checkout"
+                  className="inline-block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none
+                   focus:ring-blue-300 font-medium rounded-lg text-normal w-full sm:w-auto px-5 py-3 text-center"
+                >
+                  Add to cart
+                </Link>
               </div>
             </div>
             <hr />

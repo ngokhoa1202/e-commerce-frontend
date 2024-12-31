@@ -65,7 +65,7 @@ export default function MyClassDetailPage(
           <hr />
           {/* <Image alt="Cover" src={coverImage} className="my-8"/> */}
           <div className="grid grid-cols-2 gap-8">
-            {curriculum.map((weekPlan) => <CurriculumCard key={weekPlan.weekNumber} curriculum={weekPlan} />)}
+            {curriculum.map((weekPlan) => <CurriculumCard key={weekPlan.weekNumber + weekPlan.description} curriculum={weekPlan} />)}
           </div>
         )
       )
