@@ -5,7 +5,6 @@ export type AuthState = {
   userId: string
   accessToken: string
   refreshToken: string
-  isAuthed: boolean
 }
 
 export type AuthActions = {
@@ -20,7 +19,6 @@ export const initialState: AuthState = {
   userId: '',
   accessToken: '',
   refreshToken: '',
-  isAuthed: false,
 };
 
 export const authStore = createStore<AuthStore>()(
@@ -30,7 +28,7 @@ export const authStore = createStore<AuthStore>()(
       setUserId: (userId: string) => set({ userId }),
       setAccessToken: (accessToken: string) => {
         const token = accessToken ? `Bearer ${accessToken}` : '';
-        set(() => ({ accessToken: token, isAuthed: !!accessToken }));
+        return set({ accessToken: token });
       },
       setRefreshToken: (refreshToken: string) => set({ refreshToken }),
     }),
