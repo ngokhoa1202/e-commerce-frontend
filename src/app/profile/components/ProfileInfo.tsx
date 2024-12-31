@@ -19,7 +19,8 @@ export default function ProfileInfo({ profile, profileId, username }: { profile:
 
   const handleSave = async () => {
     try {
-      const response = await ProfileApi.editByProfileId(profileId, editedProfile, authStore.getState().accessToken)
+      const { id, ...profileWithoutId } = editedProfile;
+      const response = await ProfileApi.editByProfileId(profileId, profileWithoutId, authStore.getState().accessToken)
 
       if (response.ok) {
         setIsEditing(false);

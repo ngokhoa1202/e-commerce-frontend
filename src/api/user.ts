@@ -13,7 +13,7 @@ export default class UserApi {
   }
 
   static async getProfileId(userId: string, token: string) {
-    const response = await fetch(`${BE_URL}/user/${userId}/profileId`, {
+    const response = await fetch(`${BE_URL}/users/${userId}/profileId`, {
         method: 'GET',
         headers: { Authorization: token },
     })
@@ -22,7 +22,7 @@ export default class UserApi {
   }
 
   static async getCoursesOfUser(userId: string, token: string) {
-    const response = await fetch(`${BE_URL}/user/${userId}/courses`, {
+    const response = await fetch(`${BE_URL}/users/courses`, {
         method: 'GET',
         headers: { Authorization: token },
     })

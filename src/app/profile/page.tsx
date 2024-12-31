@@ -97,25 +97,27 @@ export default function Profile({ params }: { params: Promise<{ id: string }>}) 
   useEffect(() => {
     async function fetchData() {
       const user = await UserApi.getUserId(authStore.getState().accessToken);
-      const fetchedProfileId = await UserApi.getProfileId(user.id, authStore.getState().accessToken);
+      const { id } = await UserApi.getProfileId(user.id, authStore.getState().accessToken);
 
       const fetchedCourses = await UserApi.getCoursesOfUser(user.id, authStore.getState().accessToken);
 
       // const fetchedProfile = await ProfileApi.getByProfileId(fetchedProfileId, authStore.accessToken);
       const fetchedProfile = await ProfileApi.getByUserId(user.id, authStore.getState().accessToken);
       if(fetchedProfile) {
+        console.log(fetchedProfile)
         setProfile(fetchedProfile)
       }
       if(fetchedCourses) {
+        console.log(id)
         setCourses(fetchedCourses)
       }
-      if(fetchedProfileId) {
-        setProfileId(fetchedProfileId)
+      if(id) {
+        setProfileId(id)
       }
       if(user) {
         setUsername(user.username)
       }
-      setIsFetching(false);
+      // setIsFetching(false);
     }
 
     fetchData();
