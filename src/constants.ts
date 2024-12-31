@@ -147,4 +147,4 @@ export const SAMPLE_CURRICULUM: Array<WeeklyPlan> = [
   }
 ];
 
-export const COURSE_DESCRIPTION: string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia congue dolor in condimentum. Praesent ut quam mollis, pharetra nunc eget, facilisis eros. Phasellus euismod ullamcorper purus, at ullamcorper quam gravida vitae. Cras sed vulputate risus, eu vulputate arcu."
+export const COURSE_DESCRIPTION: string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia congue dolor in condimentum. Praesent ut quam mollis, pharetra nunc eget, facilisis eros. Phasellus euismod ullamcorper purus, at ullamcorper quam gravida vitae. Cras sed vulputate risus, eu vulputate arcu.'
