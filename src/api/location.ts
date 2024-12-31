@@ -8,6 +8,7 @@ export default class LocationApi {
     const response = await fetch(`${BE_URL}/locations`, {
       method: 'GET',
       headers: {
+        ContentType: 'application/json',
         Authorization: `${accessToken}`
       }
     });

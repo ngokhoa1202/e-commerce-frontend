@@ -12,7 +12,7 @@ import CurriculumApi from '@/api/curriculum';
 export default function MyClassDetailPage(
   {params} : {params: Promise<{id: string}>}
 ): ReactElement {
- 
+
   const [isFetching, setIsFetching] = useState(false);
 
   const [course, setCourse] = useState<CourseFullDto>(() => SAMPLE_COURSE_FULL_DTO);
@@ -40,7 +40,6 @@ export default function MyClassDetailPage(
       const fetchedCurriculum = await CurriculumApi.getByCourseId(id);
       setCurriculum(fetchedCurriculum);
     }
-
     fetchCourse();
     fetchCurriculum();
   }, [params]);
@@ -49,7 +48,7 @@ export default function MyClassDetailPage(
     <main className="container mx-auto px-16 py-8 flex flex-col gap-8">
       (
         (isFetching) ? (
-          <HashLoader 
+          <HashLoader
             color="#1D4ED8"
             size={64}
             cssOverride={loaderCSSProperties}

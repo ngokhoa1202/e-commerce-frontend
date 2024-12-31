@@ -6,7 +6,7 @@ export interface CourseCreationDto {
   name: string;
   subject: string;
   duration: string;
-  description: string
+  description: string;
   locationId: UUID;
   startDate: Date;
   endDate: Date;

@@ -46,10 +46,10 @@ export default function MyClassesPage(): ReactElement {
     fetchData();
   }, [accessToken]);
 
-  const onClickCreateUserButton = async (e: SyntheticEvent<HTMLButtonElement>) => {
+  const onClickCreateNewClass = async (e: SyntheticEvent<HTMLButtonElement>) => {
     const user: UserPlainDto = await UserApi.getCurrentUserByAccessToken(accessToken);
     if (user.role === 'TUTOR') {
-      router.push('/new');
+      router.push('my-classes/new');
     } else {
       alert('You are not a tutor to create a new class');
     }
@@ -80,7 +80,7 @@ export default function MyClassesPage(): ReactElement {
                 <li>
                   <button
                     type="button"
-                    onClick={(e) => onClickCreateUserButton(e)}
+                    onClick={(e) => onClickCreateNewClass(e)}
                     className="block text-normal font-semibold px-3 py-2 rounded-lg bg-blue-600 text-white hover:shadow-lg hover:bg-blue-700"
                   >
                     <div className="flex flex-row items-center gap-2">

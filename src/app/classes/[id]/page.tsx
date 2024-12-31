@@ -13,8 +13,8 @@ import CurriculumApi from '@/api/curriculum';
 import { HashLoader } from 'react-spinners';
 
 
-export default function ClassDetailPage({ params }: { params: Promise<{ id: string }>}) {
-  
+export default function ClassDetailPage({ params }: { params: Promise<{ id: string }> }) {
+
   const [isFetching, setIsFetching] = useState(false);
 
   const [course, setCourse] = useState<CourseFullDto>(() => SAMPLE_COURSE_FULL_DTO);
@@ -38,7 +38,7 @@ export default function ClassDetailPage({ params }: { params: Promise<{ id: stri
     }
 
     async function fetchCurriculum() {
-      const {id} = await params;
+      const { id } = await params;
       const fetchedCurriculum = await CurriculumApi.getByCourseId(id);
       setCurriculum(fetchedCurriculum);
     }
@@ -49,29 +49,33 @@ export default function ClassDetailPage({ params }: { params: Promise<{ id: stri
 
   return (
     <main className="container mx-auto px-16 py-8 flex flex-col gap-8">
-      (
+
+      {
         (isFetching) ? (
-          <HashLoader 
+          <HashLoader
             color="#1D4ED8"
             size={64}
             cssOverride={loaderCSSProperties}
             aria-label="Loading Spinner"
             loading={isFetching}
           />
-        ): (
-          <div className="grid grid-cols-12 py-4 gap-4">
-            <div className="col-span-9">
-              <h1 className="text-4xl font-bold col-span-4">{course.name}</h1>
-              <h2 className="text-2xl font-semibold col-span-6 mt-4">{course.description}</h2>
+        ) : (
+          <>
+            <div className="grid grid-cols-12 py-4 gap-4">
+              <div className="col-span-9">
+                <h1 className="text-4xl font-bold col-span-4">{course.name}</h1>
+                <h2 className="text-2xl font-semibold col-span-6 mt-4">{course.description}</h2>
+              </div>
             </div>
-          </div>
-          <hr />
-          {/* <Image alt="Cover" src={coverImage} className="my-8"/> */}
-          <div className="grid grid-cols-2 gap-8">
-            {curriculum.map((weekPlan) => <CurriculumCard key={weekPlan.weekNumber} curriculum={weekPlan} />)}
-          </div>
+            <hr />
+            {/* <Image alt="Cover" src={coverImage} className="my-8"/> */}
+            <div className="grid grid-cols-2 gap-8">
+              {curriculum.map((weekPlan) => <CurriculumCard key={weekPlan.weekNumber} curriculum={weekPlan} />)}
+            </div>
+          </>
+
         )
-      )
+      }
     </main>
   );
 }
