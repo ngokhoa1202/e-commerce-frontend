@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import ProfileApi from '@/api/profile';
 import { ProfileDto } from '@/dto/profile';
 import UserApi from '@/api/user';
-import { initialState } from '../../stores/auth';
+import { authStore } from '../../stores/auth';
 import ProfileInfo from './components/ProfileInfo';
 import CourseList from './components/CourseList';
 import { CourseDto } from '@/dto/myCourses';
@@ -45,107 +45,92 @@ const sampleCourses: CourseDto[] = [
     fees: ['$100', '$200'],
   },
   {
-    id: '223e4567-f',
-    name: 'Advanced Web Development',
-    subject: 'Web Development',
-    duration: '12 weeks',
-    startDate: '2024-05-01T10:00:00Z',
-    endDate: '2024-07-24T10:00:00Z',
-    description: 'Master web development with modern frameworks.',
-    locationId: '223e4567-f',
-    location: 'Innovation Hub, Room 202',
+    id: '15178506-63db-45d8-b3f0-61ac43154e97',
+    name: 'English for Beginners',
+    subject: 'English',
+    duration: '3 months',
+    startDate: '2024-12-01',
+    endDate: '2025-02-28',
+    locationId: '45f51cd3-47c8-41bd-9858-a34c99336c32',
+    description: 'A course designed for individuals new to learning English.',
+    location: 'Language Building, Room 102',
     tutors: [
       {
-        username: 'johndoe',
-        email: 'johndoe@example.com',
-        role: 'INSTRUCTOR',
+        username: 'tienclay',
+        email: 'tienclay@gmail.com',
+        role: 'STUDENT',
         status: 'ACTIVE',
       },
     ],
-    fees: ['$300'],
+    fees: ['$100', '$200'],
   },
   {
-    id: '323e4567-g',
-    name: 'Data Science Essentials',
-    subject: 'Data Science',
-    duration: '8 weeks',
-    startDate: '2024-06-01T10:00:00Z',
-    endDate: '2024-07-26T10:00:00Z',
-    description: 'An introductory course on data science principles and practices.',
-    locationId: '323e4567-g',
-    location: 'Data Science Lab, Room 103',
+    id: "932ba93c-3cb2-4c4d-b7c0-7f3518cc0029",
+    name: "Advanced English Conversation",
+    subject: "English",
+    duration: "6 months",
+    startDate: "2024-12-05",
+    endDate: "2025-05-31",
+    locationId: "84ffa2f3-2e27-4d31-ba75-14d83468e1d6",
+    description: "Enhance your English communication skills with advanced conversation techniques.",
+    location: 'Language Building, Room 102',
     tutors: [
       {
-        username: 'janesmith',
-        email: 'janesmith@example.com',
-        role: 'INSTRUCTOR',
-        status: 'ACTIVE',
-      },
-      {
-        username: 'alexlee',
-        email: 'alexlee@example.com',
-        role: 'ASSISTANT',
+        username: 'tienclay',
+        email: 'tienclay@gmail.com',
+        role: 'STUDENT',
         status: 'ACTIVE',
       },
     ],
-    fees: ['$150', '$200'],
-  },
-  {
-    id: '423e4567-h',
-    name: 'Machine Learning Fundamentals',
-    subject: 'Machine Learning',
-    duration: '10 weeks',
-    startDate: '2024-07-01T10:00:00Z',
-    endDate: '2024-09-01T10:00:00Z',
-    description: 'Learn the building blocks of machine learning.',
-    locationId: '423e4567-h',
-    location: 'AI Research Center, Room 404',
-    tutors: [
-      {
-        username: 'dr.alan',
-        email: 'dr.alan@example.com',
-        role: 'INSTRUCTOR',
-        status: 'ACTIVE',
-      },
-    ],
-    fees: ['$500'],
+    fees: ['$100', '$200'],
   }
 ]
 
 
 export default function Profile({ params }: { params: Promise<{ id: string }>}) {
-  // In a real application, you would fetch the tutor data based on the [id] parameter
-  
+
   const [isFetching, setIsFetching] = useState(true);
   const [courses, setCourses] = useState<CourseDto[]>(() => sampleCourses);
   const [profile, setProfile] = useState<ProfileDto>(() => sampleData);
+  const [profileId, setProfileId] = useState('')
+  const [username, setUsername] = useState('')
   useEffect(() => {
     async function fetchData() {
-      const fetchedProfileId = await UserApi.getProfileId(initialState.userId, initialState.accessToken);
+      const user = await UserApi.getUserId(authStore.getState().accessToken);
+      const fetchedProfileId = await UserApi.getProfileId(user.id, authStore.getState().accessToken);
 
-      const fetchedCourses = await UserApi.getCoursesOfUser(initialState.userId, initialState.accessToken);
+      const fetchedCourses = await UserApi.getCoursesOfUser(user.id, authStore.getState().accessToken);
 
-      const fetchedProfile = await ProfileApi.getById(fetchedProfileId, initialState.accessToken);
-
-      console.log(fetchedCourses)
-      console.log(fetchedProfile)
-      // setCourses(fetchedCourses)
-      // setProfile(fetchedProfile)
-
+      // const fetchedProfile = await ProfileApi.getByProfileId(fetchedProfileId, authStore.accessToken);
+      const fetchedProfile = await ProfileApi.getByUserId(user.id, authStore.getState().accessToken);
+      if(fetchedProfile) {
+        setProfile(fetchedProfile)
+      }
+      if(fetchedCourses) {
+        setCourses(fetchedCourses)
+      }
+      if(fetchedProfileId) {
+        setProfileId(fetchedProfileId)
+      }
+      if(user) {
+        setUsername(user.username)
+      }
+      setIsFetching(false);
     }
+
     fetchData();
   }, []);
   
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      {/* <h1 className="text-3xl font-bold mb-8 text-blue-600">User Profile</h1> */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="md:col-span-1">
-          <ProfileInfo profile={profile} />
+    <div className='container mx-auto px-4 py-8'>
+      {/* <h1 className='text-3xl font-bold mb-8 text-blue-600'>User Profile</h1> */}
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+        <div className='md:col-span-1'>
+          <ProfileInfo profile={profile} profileId={profileId} username={username}/>
         </div>
-        <div className="md:col-span-2">
-          <CourseList courses={courses} />
+        <div className='md:col-span-2'>
+          <CourseList courses={courses || []} />
         </div>
       </div>
     </div>

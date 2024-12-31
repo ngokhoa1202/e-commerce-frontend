@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import CourseApi from '@/api/course';
-import { CourseFullDto, CourseInfoDto } from '@/dto/course';
+import { CourseFullDto } from '@/dto/course';
 import ClassList from '../_components/classes/ClassList';
 
 

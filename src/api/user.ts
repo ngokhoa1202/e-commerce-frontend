@@ -3,6 +3,15 @@ import { UserPlainDto } from '@/dto/user';
 
 
 export default class UserApi {
+  static async getUserId(token: string) {
+    const response = await fetch(`${BE_URL}/auth/me`, {
+        method: 'GET',
+        headers: { Authorization: token },
+    })
+    const { data } = await response.json();
+    return data;
+  }
+
   static async getProfileId(userId: string, token: string) {
     const response = await fetch(`${BE_URL}/user/${userId}/profileId`, {
         method: 'GET',
@@ -18,11 +27,16 @@ export default class UserApi {
         headers: { Authorization: token },
     })
 
+    const { data } = await response.json();
+    return data;
+  }
+
   static async getCurrentUserByAccessToken(accessToken: string): Promise<UserPlainDto> {
     const response = await fetch(`${BE_URL}/auth/me`, {
       method: 'GET',
       headers: { Authorization: accessToken },
     });
+
     const { data } = await response.json();
     return data;
   }
