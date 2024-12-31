@@ -4,7 +4,7 @@ import { COURSE_DESCRIPTION, TIMEOUT } from '@/constants';
 import { CourseCreationDto } from '@/dto/course';
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
-import {useRouter} from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { CSSProperties, ReactElement, SyntheticEvent, useEffect, useState } from 'react';
 
 import Link from 'next/link';
@@ -88,9 +88,9 @@ export default function CreateNewClassPage(): ReactElement {
 
   const onSubmitCourseCreationForm = async (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     if (course.name !== '' && course.subject !== '' && course.duration !== '') {
-      
+
       CourseApi.create(course, accessToken).then((newCourse) => {
         if (newCourse) {
           router.back();
@@ -99,7 +99,7 @@ export default function CreateNewClassPage(): ReactElement {
         }
       })
     }
-    
+
   }
 
   const [isFetching, setIsFetching] = useState(false);
@@ -179,13 +179,13 @@ export default function CreateNewClassPage(): ReactElement {
                         (location === null) ? (
                           <div className="flex flex-row">
                             Choose a location &nbsp;
-                            <ChevronDownIcon aria-hidden="true" className="-mr-1 size-5 text-gray-400"/>
+                            <ChevronDownIcon aria-hidden="true" className="-mr-1 size-5 text-gray-400" />
                           </div>
                         ) : (
                           <div className="flex flex-row">
                             {`${location.addressLine1} ${location.addressLine2}`}
                             &nbsp;
-                            <ChevronDownIcon aria-hidden="true" className="-mr-1 size-5 text-gray-400"/>
+                            <ChevronDownIcon aria-hidden="true" className="-mr-1 size-5 text-gray-400" />
                           </div>
                         )
                       }
@@ -328,8 +328,8 @@ export default function CreateNewClassPage(): ReactElement {
             <Link
               href="/my-classes"
               className="absolute font-normal text-normal text-blue-600
-          hover:text-blue-700 active:text-blue-800 hover:underline hover:underline-offset-4
-          active:underline active:underline-offset-2 top-4 left-8 flex justify-center items-center"
+              hover:text-blue-700 active:text-blue-800 hover:underline hover:underline-offset-4
+                active:underline active:underline-offset-2 top-4 left-8 flex justify-center items-center"
             >
               &larr; Back
             </Link>
